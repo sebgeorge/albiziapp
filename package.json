@@ -4,18 +4,42 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build --modern"
   },
   "dependencies": {
+    "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.22",
+    "browser-image-compression": "^1.0.5",
     "core-js": "^2.6.5",
+    "exif-orientation-image": "^1.0.1",
+    "image-file-to-base64-exif": "^1.0.3",
+    "leaflet": "^1.5.1",
+    "lodash": "^4.17.11",
+    "onsenui": "^2.10.8",
+    "osm-auth": "^1.0.2",
+    "pusher-js": "^4.4.0",
     "register-service-worker": "^1.6.2",
+    "v-autocomplete": "^1.8.2",
+    "v-file-upload": "^3.1.7",
     "vue": "^2.6.10",
-    "vuex": "^3.0.1"
+    "vue-i18n": "^8.11.2",
+    "vue-moment": "^4.0.0",
+    "vue-multiple-progress": "^1.6.0",
+    "vue-onsenui": "^2.6.2",
+    "vue-picture-input": "^2.1.6",
+    "vue-select": "^3.1.0",
+    "vue-signature-pad": "^1.1.9-beta.1",
+    "vue-toasted": "^1.1.27",
+    "vue2-leaflet": "^2.1.1",
+    "vuex": "^3.0.1",
+    "xml-js": "^1.6.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-pwa": "^3.8.0",
     "@vue/cli-service": "^3.8.3",
+    "compression-webpack-plugin": "^1.1.12",
     "vue-template-compiler": "^2.6.10"
   }
 }
