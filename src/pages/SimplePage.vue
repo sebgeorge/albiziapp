@@ -127,7 +127,7 @@
   position: relative !important;
 }
 .vs__dropdown-menu {
-  z-index: 10005;
+  z-index: 10005!important;
 }
 .selector{
   width: 70%!important;

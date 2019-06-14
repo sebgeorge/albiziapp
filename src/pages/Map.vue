@@ -268,7 +268,7 @@ export default {
   computed: {
     instruction() {
       if (this.currentMission) {
-        return this.currentMission.activities[this.indexActivite].instruction
+        return this.currentMission.activityList[this.indexActivite].instruction
           .short;
       }
     },

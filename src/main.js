@@ -8,7 +8,7 @@ window.axios=require('axios')
 
 //TODO remove Vue-lodash
 import Toasted from 'vue-toasted';
-
+import VFileUpload from 'v-file-upload'
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VueOnsen from 'vue-onsenui'; // For UMD
@@ -45,6 +45,7 @@ Vue.component('v-select', vSelect)
 Vue.use(Vuex);
 Vue.use(VueOnsen);
 Vue.use(BootstrapVue)
+Vue.use(VFileUpload)
 Vue.use(require('vue-moment'));
 window.addEventListener("hashchange", function(){
   console.log("Hash changed to", window.location.hash);

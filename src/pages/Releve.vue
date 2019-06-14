@@ -197,7 +197,7 @@ export default {
         extends: SimplePage,
         data: function() {
           return {
-            releve: this._.clone(this.releve),
+            releve: _.clone(this.releve),
             modify: true,
             toolbarInfo: {
               backLabel: "Home",
