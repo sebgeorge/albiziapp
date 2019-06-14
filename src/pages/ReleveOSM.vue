@@ -19,7 +19,7 @@
 
         <section style="margin: 16px">
           <v-ons-button :disabled="importDone" @click="importObservation" style="margin: 6px 0">Importer dans Albiziapp</v-ons-button>
-          <v-ons-button  @click="remove" style="margin: 6px 0">Supprimer l'arbre d'OSM</v-ons-button>
+          <v-ons-button  v-if="osmUpdates" @click="remove" style="margin: 6px 0">Supprimer l'arbre d'OSM</v-ons-button>
         </section>
       </div>
     </ons-card>
@@ -36,6 +36,10 @@ export default {
       releve:{} };
   },
   computed: {
+    osmUpdates(){
+      return this.$store.state.commonData.osmUpdate
+    },
+
   },
   methods: {
     remove(){

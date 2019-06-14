@@ -1,6 +1,6 @@
 <template>
   <v-ons-page>
-    <v-ons-list-header>Mon arboretum</v-ons-list-header>
+    <v-ons-list-header>{{ $t('myArboretum') }}</v-ons-list-header>
 
     <v-ons-list>
 
@@ -10,7 +10,7 @@
           <div class="title">{{specie}}</div>
           <div class="content">
             <p>
-              Nombre d'identification : {{getIdentificationNumber(specie)}}
+              {{ $t('nbIdentification')}} : {{getIdentificationNumber(specie) }}
             </p>
           </div>
         </v-ons-card>
@@ -56,7 +56,7 @@ export default {
       let genus = specie.split(' ')[0]
       let species= specie.split(' ')[1]
       let formated=species.charAt(0).toUpperCase()+species.slice(1)
-      return '/Feuilles/'+genus+formated+'.jpg'
+      return './Feuilles/'+genus+formated+'.jpg'
     }
   }
 };

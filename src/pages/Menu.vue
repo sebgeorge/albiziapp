@@ -13,9 +13,9 @@
         </div>
         <div class="center">{{ item.title }}</div>
       </v-ons-list-item>
-      <v-ons-list-item @click="logout">Logout</v-ons-list-item>
+      <v-ons-list-item @click="logout">{{ $t('logout') }}</v-ons-list-item>
       <v-ons-list-item @click="admin">Admin</v-ons-list-item>
-      <v-ons-list-item>Langue &nbsp;
+      <v-ons-list-item>{{ $t('language') }} &nbsp;
         <select v-model="$i18n.locale">
           <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">
             {{ lang }}
@@ -42,25 +42,24 @@ export default {
          window.location.reload()
     },
     admin() {
+      if(this.isAdmin){
       this.$store.commit("navigator/push", {
-        extends: Admin,
-        data() {
-          return {
-            toolbarInfo: {
-              backLabel: "Home",
-              title: "key"
-            }
-          };
-        }
-      });
-    }
-  },
-  /*
-    admin() {
+              extends: Admin,
+              data() {
+                return {
+                  toolbarInfo: {
+                    backLabel: "Home",
+                    title: "key"
+                  }
+                };
+              }
+            });
+       return
+      }
       this.$ons.notification
         .prompt("Mot de passe", {})
         .then(function(response) {
-          if (response == "calamar") {
+          if (response == "kraken") {
             this.$store.commit("navigator/push", {
               extends: Admin,
               data() {
@@ -72,18 +71,20 @@ export default {
                 };
               }
             });
+            this.$store.commit('user/setAdmin',true)
             this.$store.commit("splitter/toggle");
           } else {
             this.$ons.notification.alert("Votre tentative d'intrusion a été enregistré")
           }
-        }.bind(this))
-        
-    
-  }}*/
+    }.bind(this))
+  }},
   data() {
     return {langs: ['fr', 'en']};
   },
   computed: {
+    isAdmin(){
+return this.$store.state.user.isAdmin
+    },
     gamificationMode() {
       return this.$store.state.user.gamificationMode;
     },

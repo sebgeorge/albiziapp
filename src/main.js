@@ -5,6 +5,7 @@ import './onsen-css-components.css'; // Onsen UI CSS components source for custo
 import './vue-onsenui-kitchensink.css'; // CSS specific to this app
 window._=require('lodash')
 window.axios=require('axios')
+
 //TODO remove Vue-lodash
 import Toasted from 'vue-toasted';
 
@@ -20,7 +21,6 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import BProgress from 'bootstrap-vue/es/components/progress/progress'
 import BProgressBar from 'bootstrap-vue/es/components/progress/progress-bar'
 import vSelect from 'vue-select'
-import FileUpload from 'v-file-upload'
 
 
 // import VueOnsen from 'vue-onsenui/esm'; // For ESM
@@ -57,7 +57,6 @@ window.addEventListener("hashchange", function(){
 Vue.component('custom-toolbar', CustomToolbar); // Common toolbar
 Vue.component('b-progress', BProgress);
 Vue.component('b-progress-bar', BProgressBar);
-Vue.use(FileUpload)
 import Progress from 'vue-multiple-progress'
 Vue.component('VmProgress', Progress)
 
@@ -65,8 +64,9 @@ import VueI18n from 'vue-i18n'
 import messages from './lang/messages'
 Vue.use(VueI18n)
 
-let locale = navigator.language
-console.log(locale)
+let language = navigator.language
+let index = language.indexOf("-")
+let locale = language.substring(0,index)
 
 const i18n = new VueI18n({
   fallbackLocale: 'fr',

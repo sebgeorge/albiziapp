@@ -359,7 +359,7 @@ export default {
       return this.$store.state.user.indexActivite;
     },
     nbActivite() {
-      return this.$store.state.user.mission.activities.length;
+      return this.$store.state.user.mission.activityList.length;
     },
     completion() {
       return this.$store.state.user.completion;
@@ -396,15 +396,6 @@ export default {
     this.$nextTick(() => {
       this.map = this.$refs.map.mapObject; // work as expected
       this.map.locate({ setView: true, maxZoom: 19, zoom: 19 });
-      axios.get("/trees").then(
-        function(results) {
-          console.log(results);
-          for (let circle of results.data) {
-            circle.radius = 5;
-            this.osmCircles.push(circle);
-          }
-        }.bind(this)
-      );
     });
   },
   mounted() {

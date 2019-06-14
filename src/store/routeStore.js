@@ -1,6 +1,7 @@
 import {
   cpus
 } from "os";
+import { EventBus } from '../js/eventBus.js';
 var osmAuth = require("osm-auth");
 var removeTree = require('../js/osmRemoveTree')
 var addTree = require('../js/osmPost')
@@ -13,6 +14,7 @@ export default {
       state: {
         identification: false,
         verification: false,
+        osmUpdates:false,
         confidenceValues: [
           'Non renseigné',
           'Peu confiant',
@@ -23,6 +25,10 @@ export default {
         setVerificationMode(state, mode) {
           state.verification = mode
         },
+        setOsmUpdates(state, mode) {
+          state.osmUpdates = mode
+        },
+
         setIdentificationMode(state, mode) {
           state.identification = mode
         }
@@ -215,10 +221,6 @@ export default {
                   root: true
                 })
             })
-
-          dispatch("user/extractKnowledgePoints", ["validate"], {
-            root: true
-          })
         },
         modifyObservation({
           commit,
@@ -238,13 +240,6 @@ export default {
               }, {
                   root: true
                 })
-              /*var actions = extractActions(state.releves[index], "verify")
-              dispatch("user/extractExplorationPoints", actions.explorationActions, {
-                root: true
-              })
-              dispatch("user/extractKnowledgePoints", actions.knowledgeActions, {
-                root: true
-              })*/
             })
         },
         setNoTree({
@@ -379,6 +374,7 @@ export default {
         name: null,
         lostProgression:0,
         id: null,
+        isAdmin:false,
         isGod:false,
         isAnon: false,
         formerName: null,
@@ -408,6 +404,9 @@ export default {
       mutations: {
         updateStatus(state, status) {
           state.status = status
+        },
+        setAdmin(state,status){
+         state.isAdmin=status
         },
         lostProgression(state) {
           state.lostProgression = 0
@@ -500,7 +499,12 @@ export default {
           state.id = state.formerId
         },
         updateProgression(state, param) {
-          if (updateCompletion(state, param.operation, param.releve)) state.completion++
+          let success = updateCompletion(state, param.operation, param.releve)
+          if (success) {
+            state.completion++
+          } else {
+            displayHelpMessage(state, param.operation, param.releve)
+          }
         },
         updateTime(state) {
 
@@ -513,7 +517,12 @@ export default {
           clearInterval(state.time.timer)
         },
         identification(state, releve) {
-          if (updateCompletion(state, "IDENTIFY", releve)) state.completion++
+          let success = updateCompletion(state, "IDENTIFY", releve)
+          if (success) {
+            state.completion++
+          } else {
+            displayHelpMessage(state, "IDENTIFY", releve)
+          }
         },
         setBackup(state, sessionBackup) {
           if(sessionBackup.lostProgression==1){
@@ -541,13 +550,8 @@ export default {
           commit, state
         }, actions) {
           if (state.gamificationMode) {
-            console.log(JSON.stringify(state.scores))
             for (var score of state.scores) {
-              console.log(JSON.stringify(score))
               for (var rule of score.rules) {
-                console.log(JSON.stringify(actions))
-                console.log(rule.code)
-                console.log(actions.includes(rule.code))
                 if (actions.includes(rule.code)) {
                   commit('addPoints', {
                     name: score.name,
@@ -677,7 +681,7 @@ function updateCompletion(state, operation, releve) {
   if (type == operation) {
 
     let { specieAdded, genusAdded } = updateDifferentSet(state, specie, genus)
-    switch (state.activite.object) {
+    switch (state.activite.option) {
       case 'NONE':
         return true;
       case 'SPECIE':
@@ -721,3 +725,13 @@ function alreadyVerified(releve, userId) {
   }
   return false
 }
+
+function displayHelpMessage(state, operation, releve) {
+  if (state.activite.type == operation) {
+    EventBus.$emit('displayHelpMessage', {
+      option: state.activite.option, 
+      releve: releve
+    });
+  }
+}
+  

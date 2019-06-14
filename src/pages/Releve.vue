@@ -33,7 +33,7 @@
           </p>
           <v-ons-button @click="modify" :disabled="noTreeValue" style="margin: 6px 0">Modifier</v-ons-button>
           <v-ons-button :disabled="validated || noTreeValue" @click="validate" style="margin: 6px 0">Confirmer</v-ons-button>
-          <v-ons-button v-if="allowImport && !fromOSM" @click="uploadToOSM" style="margin: 6px 0">Envoyer vers OSM</v-ons-button>
+          <v-ons-button v-if="allowImport && !fromOSM && osmUpdates" @click="uploadToOSM" style="margin: 6px 0">Envoyer vers OSM</v-ons-button>
 
           <v-ons-button v-if="visualize" @click="visualizeReleve" style="margin: 6px 0">Voir</v-ons-button>
         </section>
@@ -52,7 +52,7 @@
           <p class="center">Supprimer le relevé, cette opération est définitive!</p>
           <v-ons-button @click="removeObs" :disabled="(!allowRemove)" style="margin: 6px 0">Supprimer</v-ons-button>
         </section>
-        <section v-if="fromOSM" style="margin: 16px">
+        <section v-if="fromOSM && osmUpdates" style="margin: 16px">
           <p class="center">Renvoyer le relevé sur OSM</p>
           <v-ons-button @click="uploadAndRemove" style="margin: 6px 0">Renvoyer vers OSM</v-ons-button>
         </section>
@@ -106,6 +106,9 @@ export default {
     };
   },
   computed: {
+    osmUpdates(){
+      return this.$store.state.commonData.osmUpdate
+    },
     releve() {
       return this.$store.state.releve.releves.find(rel => rel._id == this.id);
     },

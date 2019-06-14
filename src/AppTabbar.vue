@@ -20,7 +20,11 @@
     ></v-ons-tabbar>
   </v-ons-page>
 </template>
-
+<style>
+.tabbar__label{
+  text-transform: none!important;
+}
+</style>
 <script>
 import Pusher from "pusher-js";
 import Map from "./pages/Map.vue";
