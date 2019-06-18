@@ -132,7 +132,7 @@
       <v-ons-icon icon="md-pin"></v-ons-icon>
     </v-ons-fab>
 
-    <ons-bottom-toolbar style="background-color:#F44336; color:white">
+    <v-ons-bottom-toolbar style="background-color:#F44336; color:white">
       <center v-show="userID && !missionDone">
         {{instruction}}
         <v-ons-row>
@@ -146,7 +146,7 @@
           </v-ons-col>
         </v-ons-row>
       </center>
-    </ons-bottom-toolbar>
+    </v-ons-bottom-toolbar>
   </v-ons-page>
 </template>
 <style>
@@ -404,7 +404,7 @@ export default {
           boundary: this.map.getBounds()
         });})
     this.$root.$on("changeCenter", coordinates => {
-      this.map.flyTo(coordinates);
+      this.map.flyTo([coordinates[1],coordinates[0]]);
     });
     let options = {
       enableHighAccuracy: true,

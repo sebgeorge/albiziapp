@@ -204,9 +204,9 @@ export default {
       console.log("originalFile instanceof Blob", imageFile instanceof Blob); // true
       console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
 
-      var maxSizeMB = 0.1;
+      var maxSizeMB = 1;
       var maxWidthOrHeight = 600; // compressedFile will scale down by ratio to a point that width or height is smaller than maxWidthOrHeight
-      imageCompression(imageFile, maxSizeMB, maxWidthOrHeight) // maxSizeMB, maxWidthOrHeight are optional
+      imageCompression(imageFile, {maxSizeMB:maxSizeMB, maxWidthOrHeight:maxWidthOrHeight}) // maxSizeMB, maxWidthOrHeight are optional
         .then(
           function(compressedFile) {
             console.log(
@@ -219,6 +219,7 @@ export default {
             imageCompression.getDataUrlFromFile(compressedFile).then(
               function(compressedDataURI) {
                 this.releve.image = compressedDataURI;
+                console.log(this.releve)
               }.bind(this)
             );
             //return uploadToServer(compressedFile); // write your own logic

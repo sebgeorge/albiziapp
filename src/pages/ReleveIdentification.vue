@@ -177,21 +177,11 @@ export default {
       //this.image = this.$refs.pictureInput.image;
       // console.log(this.image.length)
       var imageFile = this.$refs.pictureInput.file;
-      console.log("originalFile instanceof Blob", imageFile instanceof Blob); // true
-      console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
-
       var maxSizeMB = 0.1;
       var maxWidthOrHeight = 600; // compressedFile will scale down by ratio to a point that width or height is smaller than maxWidthOrHeight
-      imageCompression(imageFile, maxSizeMB, maxWidthOrHeight) // maxSizeMB, maxWidthOrHeight are optional
+      imageCompression(imageFile, {maxSizeMB:maxSizeMB, maxWidthOrHeight:maxWidthOrHeight}) // maxSizeMB, maxWidthOrHeight are optional
         .then(
           function(compressedFile) {
-            console.log(
-              "compressedFile instanceof Blob",
-              compressedFile instanceof Blob
-            ); // true
-            console.log(
-              `compressedFile size ${compressedFile.size / 1024 / 1024} MB`
-            ); // smaller than maxSizeMB
             imageCompression.getDataUrlFromFile(compressedFile).then(
               function(compressedDataURI) {
                 this.$set(this.releve.identificationValue,'image', compressedDataURI);
