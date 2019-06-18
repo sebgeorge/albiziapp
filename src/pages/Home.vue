@@ -175,7 +175,8 @@ export default {
       'timeLeft': {
         handler: function(newValue, oldValue){
           if (newValue == 0) {
-            this.activityEnd('done')
+            let status = this.goal ? "failed" : "done"
+            this.activityEnd(status)
           }
         },
         deep : true
@@ -409,7 +410,7 @@ export default {
       return res
     },
     displayActivity(statut, intitule) {
-      if (statut == 'skipped') {
+      if (statut == 'skipped' || statut == 'failed') {
         return "❌ " + intitule
       } else if (statut == 'toDo') {
         return intitule
