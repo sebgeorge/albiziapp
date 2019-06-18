@@ -169,7 +169,7 @@ export default {
           data.append("trace", dataURI);
           data.append("leaf", imageData);
 
-          var source = new SSE("http://localhost:8081/api/setupImages", {
+          var source = new SSE("/api/setupImages", {
             headers: { "Content-Type": "application/json;charset=UTF-8" },
             payload: JSON.stringify({ trace: dataURI, leaf: imageData })
           });

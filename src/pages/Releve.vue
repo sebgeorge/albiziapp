@@ -173,7 +173,7 @@ export default {
     visualizeReleve() {
       this.$store.commit("navigator/pop");
       this.$store.commit("tabbar/set", 0);
-      this.$root.$emit("changeCenter", this.releve.coordinates);
+      this.$root.$emit("changeCenter", this.releve.location.coordinates);
     },
     validate() {
       this.$store.dispatch("releve/validateObservation", this.releve);
