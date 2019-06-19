@@ -16,7 +16,7 @@ export default {
         verification: false,
         osmUpdates:false,
         confidenceValues: [
-          'Non renseigné',
+          'Non renseignée',
           'Peu confiant',
           'Confiant',
         ]
@@ -97,6 +97,9 @@ export default {
               state.species.push(releve.specie)
             }
           }
+        },
+        removeAll(state) {
+          state.species.length = 0
         }
       }
     },
@@ -200,6 +203,9 @@ export default {
           if (state.releve.length > 1) {
             state.releve.pop();
           }
+        },
+        removeAll(state) {
+          state.releves.length = 0
         }
       },
       actions: {
@@ -404,6 +410,7 @@ export default {
       mutations: {
         updateStatus(state, status) {
           state.status = status
+          displayNewStatusMessage(status)
         },
         setAdmin(state,status){
          state.isAdmin=status
@@ -579,10 +586,16 @@ export default {
         }) {
           axios.get('/api/observation')
             .then(function (res) {
+              commit('releve/removeAll', null, {
+                root: true
+              })
               commit('releve/addMultiple', res.data, {
                 root: true
               })
               let userObservation = res.data.filter(val => val.osmId == state.id)
+              commit('arboretum/removeAll', null, {
+                root: true
+              })
               commit('arboretum/addMultiple', userObservation, {
                 root: true
               })
@@ -735,3 +748,6 @@ function displayHelpMessage(state, operation, releve) {
   }
 }
   
+function displayNewStatusMessage(status) {
+  EventBus.$emit('displayNewStatusMessage', status)
+}

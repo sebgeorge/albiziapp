@@ -70,22 +70,8 @@ export default {
     	for (let i = 0; i < this.trophies.length; i++) {
     		if (this.trophies[i].obtenu) res++
     	}
-    return res
+    	return res
     }
-	},
-	watch:{
-		'status' :{
-			handler:function(newStatus){
-				if(newStatus && newStatus.length>0){
-				let toast = this.$toasted.show("Vous avez acquis un nouveau status : " + _.last(newStatus).name + "!", { 
-                fullWidth : true,
-                position: "bottom-center", 
-                duration : 5000,
-                icon : "clock"
-          });
-
-			}}
-		}
 	},	
   methods : {
 		displayStatusDetails(){
