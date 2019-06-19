@@ -82,7 +82,6 @@
           color="lime"
         />
 
-        <l-marker :lat-lng.sync="position"></l-marker>
 
         <l-circle
           v-for="(circle,index) in osmData"
@@ -94,16 +93,6 @@
           :color="'yellow'"
         />
 
-        <l-circle
-          v-for="(circle,index) in tempMarker"
-          custom="10"
-          @click="tempMarkerClick()"
-          className="waitingCreation"
-          v-bind:key="'OSMTemp'+index"
-          :lat-lng="getGeoJSONCoordinate(circle.location.coordinates)"
-          :radius="6"
-          :color="'yellow'"
-        />
 
         <l-tile-layer :url="url" :options="mapOptions" :attribution="attribution"/>
       </l-map>
@@ -460,10 +449,11 @@ export default {
     locationFound(e) {
       console.log(e);
       this.position = [e.coords.latitude, e.coords.longitude];
-      /* L.marker(e.latlng).addTo(this.map)
-        .bindPopup("You are within " + radius + " meters from this point").openPopup();
-
-    L.circle(e.latlng, radius).addTo(this.map);*/
+      if(this.marker){
+        this.map.removeLayer(this.marker)
+      }
+       this.marker=L.marker(this.position)
+       this.map.addLayer(this.marker)
     },
     osmClick(index) {
       let releve = this.osmData[index];

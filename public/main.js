@@ -35,14 +35,13 @@ import loggerPlugin from './store/loggerPlugin'
 import statusPlugin from './store/statusPlugin'
 
 import L from 'leaflet';
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+delete L.Icon.Default.prototype._getIconUrl;
 
-let DefaultIcon = L.icon({
-    iconUrl: icon,
-    shadowUrl: iconShadow
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png').splice("\"")[0],
+  iconUrl: require('leaflet/dist/images/marker-icon.png').splice("\"")[0],
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png').splice("\"")[0],
 });
-L.Marker.prototype.options.icon = DefaultIcon;
 
 Vue.config.devtools = true
 window.location.hash = "#de";

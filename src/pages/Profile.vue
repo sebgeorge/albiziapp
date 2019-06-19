@@ -80,7 +80,7 @@ export default {
 				let toast = this.$toasted.show("Vous avez acquis un nouveau status : " + _.last(newStatus).name + "!", { 
                 fullWidth : true,
                 position: "bottom-center", 
-                duration : 5000,
+                duration : 60000,
                 icon : "clock"
           });
 
