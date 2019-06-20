@@ -1,16 +1,11 @@
 {
-  "name": "osm-webpack",
-  "short_name": "osm-webpack",
+  "name": "Albiziapp",
+  "short_name": "Albiziapp",
   "icons": [
     {
-      "src": "./img/icons/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "./img/icons/android-chrome-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "./favicon.ico",
+      "sizes": "100x104",
+      "type": "image/ico"
     }
   ],
   "start_url": "./index.html",

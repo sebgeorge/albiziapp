@@ -89,6 +89,7 @@ export default {
     allowOSMModif:"Allow OSM modification",
     restoreMission: "Restore mission",
     restore: "Restore",
+    showOSMData: "Show OSM data",
 
     //ARBORETUM
 
@@ -240,6 +241,7 @@ export default {
     allowOSMModif:"Autoriser modification d'OSM",
     restoreMission: "Restaurer mission",
     restore: "Restaurer",
+    showOSMData: "Montrer données OSM",
 
     //ARBORETUM
 
