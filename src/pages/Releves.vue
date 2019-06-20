@@ -1,7 +1,7 @@
 <template>
   <v-ons-page>
     <v-ons-list>
-      <v-ons-list-header>{{ $t('tracingsList') }}</v-ons-list-header>
+      <v-ons-list-header>{{ $t('recordsList') }}</v-ons-list-header>
       <v-ons-list-item
         v-for="(releve,index) in releves"
         :key="index"

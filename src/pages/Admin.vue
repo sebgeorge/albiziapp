@@ -3,9 +3,9 @@
     <custom-toolbar backLabel="Retour"></custom-toolbar>
     <div class="content">
       <v-ons-list>
-        <v-ons-list-title>{{ $t('administratorTracings') }}</v-ons-list-title>
+        <v-ons-list-title>{{ $t('administratorRecords') }}</v-ons-list-title>
         <v-ons-list-item>
-          <div class="center">{{ $t('identificationTracings') }}</div>
+          <div class="center">{{ $t('identificationRecords') }}</div>
           <div class="right">
             <v-ons-switch v-model="identCheck" @change="setIdentificationMode"></v-ons-switch>
           </div>
@@ -37,7 +37,7 @@
           </div>
         </v-ons-list-item>
         <v-ons-list-item>
-          <div class="center">{{ $t('tracingVerificationMode') }}</div>
+          <div class="center">{{ $t('recordVerificationMode') }}</div>
           <div class="right">
             <v-ons-switch v-model="verificationMode"></v-ons-switch>
           </div>
@@ -106,7 +106,7 @@
               v-bind:key="index+'verifs'"
             >
               <div class="center">
-                <b>{{ $t('originTracing') }}</b>
+                <b>{{ $t('originRecord') }}</b>
                 {{verif.specie}}
                 <v-ons-button @click="visualizeReleve(verif)" style="margin-left:40px;">Voir</v-ons-button>
               </div>
@@ -114,8 +114,8 @@
                 <span>
                   <b>{{ $t('userAction') }}</b>
                 </span>
-                <span v-if="verif.validated">{{ $t('tracingValidation') }}</span>
-                <span v-if="!verif.validated">{{ $t('tracingModification') }} {{verif.userSpecie}}</span>
+                <span v-if="verif.validated">{{ $t('recordValidation') }}</span>
+                <span v-if="!verif.validated">{{ $t('recordModification') }} {{verif.userSpecie}}</span>
               </div>
             </v-ons-list-item>
           </v-ons-list>
@@ -136,13 +136,13 @@
               v-bind:key="index+'ident'"
             >
               <div class="center">
-                <b>{{ $t('originTracing') }}</b>
+                <b>{{ $t('originRecord') }}</b>
                 {{ident.specie}} 
                 <v-ons-button @click="visualizeReleve(ident)" style="margin-left:40px;">Voir</v-ons-button>
               </div>
               <div class="left" style="display:block">
                 <span>
-                  <b>{{ $t('userTracing') }} {{ident.userSpecie}}</b>
+                  <b>{{ $t('userRecord') }} {{ident.userSpecie}}</b>
                 </span>
               </div>
             </v-ons-list-item>

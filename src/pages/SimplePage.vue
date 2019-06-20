@@ -105,13 +105,7 @@
           capture="camera"
           size="10"
           buttonClass="btn"
-          :customStrings="{
-          tap: 'Appuyez ici pour prendre une photo', // HTML allowed
-          change: 'Modifier photo', // Text only
-          remove: 'Supprimer photo', // Text only
-
-        drag: 'Prendre photo'
-      }"
+          :customStrings=customStrings
         ></picture-input>
       </v-ons-list-item>
     </v-ons-list>
@@ -165,7 +159,13 @@ export default {
       specieVerSource: speciesList,
       genusList: genusList,
       modify: false,
-      validate: false
+      validate: false,
+      customStrings:{ 
+        drag: 'Prendre photo',
+        change: this.$t('change'),
+        remove: this.$t('remove'),
+        tap: this.$t('tap')
+      }
     };
   },
   components: {

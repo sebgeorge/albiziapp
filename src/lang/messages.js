@@ -1,6 +1,11 @@
 export default {
   en: {
 
+    //GENERAL
+
+    validate: "Validate",
+    back: "Back",
+
     // APPTABBAR
 
     map: "Map",
@@ -14,9 +19,12 @@ export default {
     missionMenu: "Current mission",
     scoreMenu: "Score",
     arboretumMenu: "My arboretum",
-    tracingsMenu: "My tracings",
+    recordsMenu: "My records",
     language: "Language",
     logout: "Logout",
+    password: "Password",
+    attemptIntrusion:"Your attempt intrusion has been recorded",
+
 
     //HOME
 
@@ -29,14 +37,14 @@ export default {
     skipActivityDesc: "This action is irreversible",
     skipButton: "SKIP",
     cancelButton: "CANCEL",
-    tracingsDone: "Tracings done",
+    recordsDone: "Records done",
     newTrophy: "New trophy",
     timedActivity: "A timed activity has just begun !",
 
     //MAP
 
     confirmTitle: "Confirmation",
-    confirmDesc: "Do you want to make a new tracing ?",
+    confirmDesc: "Do you want to make a new record ?",
     yesButton: "OK",
     noButton: "CANCEL",
     missionOverTitle: "Mission over",
@@ -51,24 +59,24 @@ export default {
 
     //ADMIN
 
-    administratorTracings: "Administrator tracings",
-    identificationTracings: "Identification tracings",
-    anonymousMode: "Anonymous tracing creation mode (tracings will be seen as those of another player)",
-    deletionMode: "Deletion mode (please avoid removing tracings of other admins)",
+    administratorRecords: "Administrator records",
+    identificationRecords: "Identification records",
+    anonymousMode: "Anonymous record creation mode (records will be seen as those of another player)",
+    deletionMode: "Deletion mode (please avoid removing records of other admins)",
     expertIdentificationVerificationMode: "Verification mode of expert identifications",
-    tracingVerificationMode: "Verification mode of other players tracings",
+    recordVerificationMode: "Verification mode of other players records",
     gamificationMode: "Gamification mode",
     resetSession: "Reset session",
     resetButton: "Reset",
     addButton: "Add",
     usersConnected: "Users connected",
     VerificationDoneBy: "Verifications done by",
-    originTracing: "Origin tracing :",
+    originRecord: "Origin record :",
     userAction: "User action :",
-    tracingValidation: "tracing validation",
-    tracingModification: "tracing modification by",
+    recordValidation: "record validation",
+    recordModification: "record modification by",
     identificationDoneBy: "Identifications done by",
-    userTracing: "User tracing :",
+    userRecord: "User record :",
 
     //ARBORETUM
 
@@ -77,7 +85,7 @@ export default {
 
     //RELEVES
 
-    tracingsList: "Tracings list",
+    recordsList: "Records list",
     unspecifiedTree: "Unspecified Tree",
 
     //FOLIA
@@ -86,10 +94,36 @@ export default {
     takePict: "Take a picture of a leaf and then circle the leaf",
     results: "Results",
     circleLeaf: "Circle the leaf and validate",
-    validate: "Validate"
+
+    //SCORE PROFILE
+
+    actualStatus: "Actual status",
+
+    //STATUS DETAILS
+    acquireStatus:"Acquire a status",
+    statusDescription: "Statuses are obtained by progressing in the different scores. You will find below the history of the acquired status.",
+
+    //RELEVEIDENTIFICATION
+
+    identificationExercise: "Identification exercise",
+    exerciseDescription1: "You have to identify this tree previously identified by an expert.",
+    exerciseDescription2: "Take at least one picture",
+    exerciseDescription3: "of the record and fill in the fields as best as possible. You will have the right answer after submitting your identification.",
+    identifyTree: "Identify a tree",
+    specieName:"Specie name",
+    genusName:"Genus name",
+    commonName:"Common name",
+    tap:"Tap to take a picture",
+    remove:"Remove picture",
+    change:"Change picture"
 
   },
   fr: {
+
+    //GENERAL
+
+    validate: "Valider",
+    back: "Retour",
     
     // APPTABBAR
 
@@ -104,9 +138,11 @@ export default {
     missionMenu: "Mission en cours",
     scoreMenu: "Score",
     arboretumMenu: "Mon arboretum",
-    tracingsMenu: "Mes relevés",
+    recordsMenu: "Mes relevés",
     language: "Langue",
     logout: "Déconnexion",
+    password: "Mot de passe",
+    attemptIntrusion:"Votre tentavite d'intrusion à été enregistrée",
 
     //HOME
 
@@ -119,7 +155,7 @@ export default {
     skipActivityDesc: "Cette action est irréversible",
     skipButton: "PASSER",
     cancelButton: "ANNULER",
-    tracingsDone: "Relevés effectués",
+    recordsDone: "Relevés effectués",
     newTrophy: "Nouveau trophée",
     timedActivity: "Une activité chronométrée vient de commencer !",
 
@@ -141,24 +177,24 @@ export default {
 
     //ADMIN
 
-    administratorTracings: "Relevés d'administrateur",
-    identificationTracings: "Relevés d'identification",
+    administratorRecords: "Relevés d'administrateur",
+    identificationRecords: "Relevés d'identification",
     anonymousMode: "Mode création de relevé anonyme (les relevés seront vus comme ceux d'un autre joueur)",
     deletionMode: "Mode suppression (EVITEZ DE SUPPRIMER DES RELEVES D'AUTRES ADMINS)",
     expertIdentificationVerificationMode: "Mode vérification des identifications expertes",
-    tracingVerificationMode: "Mode vérification des relevés utilisateurs",
+    recordVerificationMode: "Mode vérification des relevés utilisateurs",
     gamificationMode: "Mode gamification",
     resetSession: "Réinitialiser la session",
     resetButton: "Réinitialiser",
     addButton: "Ajouter",
     usersConnected: "Utilisateurs connectés",
     VerificationDoneBy: "Vérifications effectuées par",
-    originTracing: "Relevé d'origine :",
+    originRecord: "Relevé d'origine :",
     userAction: "Action utilisateur :",
-    tracingValidation: "validation du relevé",
-    tracingModification: "modification du relevé par",
+    recordValidation: "validation du relevé",
+    recordModification: "modification du relevé par",
     identificationDoneBy: "Identifications effectuées par",
-    userTracing: "Relevé utilisateur :",
+    useRecord: "Relevé utilisateur :",
 
     //ARBORETUM
 
@@ -167,7 +203,7 @@ export default {
 
     //RELEVES
 
-    tracingsList: "Liste des relevés",
+    recordsList: "Liste des relevés",
     unspecifiedTree: "Arbre non renseigné",
 
     //FOLIA
@@ -176,6 +212,30 @@ export default {
     takePict: "Prenez une photo de feuille puis réalisez un tracé à l'intérieur de la feuille",
     results: "Résultats",
     circleLeaf: "Réalisez un tracé à l'intérieur de la feuille puis validez",
-    validate: "Valider"
+    validate: "Valider",
+
+    //SCORE PROFILE
+
+    actualStatus: "Statut actuel",
+
+    //STATUS DETAILS
+    acquireStatus:"Acquérir un statut",
+    statusDescription: "Les statuts sont obtenus en progressant dans les différents scores. Vous trouverez ci-dessous l'historique des status acquis.",
+
+    //RELEVEIDENTIFICATION
+
+    identificationExercise: "Exercice d'identification",
+    exerciseDescription1: " Vous devez identifier cet arbre précédemment identifié par un expert.",
+    exerciseDescription2: "Prenez au moins une photo",
+    exerciseDescription3: "du relevé et remplissez les champs le mieux possible. Vous aurez la bonne réponse après avoir soumis votre identification",
+    identifyTree: "Identifier un arbre",
+    specieName:"Nom de l'espèce",
+    genusName:"Nom du genre",
+    commonName:"Nom vernaculaire",
+    tap:"Appuyer pour prendre une photo",
+    remove:"Supprimer photo",
+    change:"Modifier photo"
+
+
   }
 }

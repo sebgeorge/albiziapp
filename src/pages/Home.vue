@@ -28,7 +28,7 @@
                   {{completion}} / {{goal}}
                 </VmProgress>
                 <div v-else>
-                 {{ $t('tracingsDone')}} : {{completion}}
+                 {{ $t('recordsDone')}} : {{completion}}
                 </div>
               </v-ons-col>  
               <v-ons-col width="10%">
