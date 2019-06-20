@@ -15,6 +15,7 @@ export default {
         identification: false,
         verification: false,
         osmUpdates:false,
+        showOSM:false,
         confidenceValues: [
           'Non renseigné',
           'Peu confiant',
@@ -24,6 +25,9 @@ export default {
       mutations: {
         setVerificationMode(state, mode) {
           state.verification = mode
+        },
+        showOSM(state,mode){
+          state.showOSM=mode
         },
         setOsmUpdates(state, mode) {
           state.osmUpdates = mode
@@ -39,8 +43,6 @@ export default {
       namespaced: true,
       state: {
         data: [],
-        tempMarker:[],
-        tempSuppressed:[],
       },
       mutations: {
         setData(state, data) {

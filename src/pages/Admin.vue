@@ -11,6 +11,13 @@
           </div>
         </v-ons-list-item>
         <v-ons-list-item>
+          <div class="center">Show OSM data</div>
+          <div class="right">
+            <v-ons-switch v-model="showOSM"></v-ons-switch>
+          </div>
+        </v-ons-list-item>
+
+        <v-ons-list-item>
           <div class="center">Authoriser modification d'OSM</div>
           <div class="right">
             <v-ons-switch v-model="identCheck" @change="osmUpdates"></v-ons-switch>
@@ -184,6 +191,16 @@ export default {
       },
       set(val) {
         this.$store.commit("commonData/setIdentificationMode", val);
+      }
+    },
+    showOSM:{
+      get(){
+                return this.$store.state.commonData.showOSM;
+
+      },
+      set(val){
+                this.$store.commit("commonData/showOSM", val);
+
       }
     },
     osmUpdates: {

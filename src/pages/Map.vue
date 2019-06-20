@@ -261,6 +261,10 @@ export default {
           .short;
       }
     },
+    showOSM(){
+      return this.$store.state.commonData.showOSM
+    }
+    ,
     missionDone() {
       if (this.$store.state.user.activite) {
         return false;
@@ -571,7 +575,7 @@ export default {
       this.currentZoom = zoom;
     },
     centerUpdate(center) {
-
+      if(this.showOSM)
       this.$store.dispatch("osmData/getOSMData", {
         boundary: this.map.getBounds()
       });
