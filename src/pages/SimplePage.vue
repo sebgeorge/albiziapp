@@ -116,9 +116,9 @@
       </v-ons-list-item>
     </v-ons-list>
     <section style="margin: 16px">
-      <v-ons-button v-if="!modify && osmUpdates" @click="uploadToOSM" style="margin: 6px 0">Envoyer vers OSM</v-ons-button>
-      <v-ons-button @click="complete" style="margin: 6px 0">Enregistrer</v-ons-button>
-      <v-ons-button modifier="outline" @click="cancel" style="margin: 6px 0">Annuler</v-ons-button>
+      <v-ons-button v-if="!modify && osmUpdates" @click="uploadToOSM" style="margin: 6px">Envoyer vers OSM</v-ons-button>
+      <v-ons-button @click="complete" style="margin: 6px">Enregistrer</v-ons-button>
+      <v-ons-button modifier="outline" @click="cancel" style="margin: 6px">Annuler</v-ons-button>
     </section>
   </v-ons-page>
 </template>

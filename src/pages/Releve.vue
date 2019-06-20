@@ -31,11 +31,11 @@
             <b>modifier</b> le relevé
             <b>ou bien confirmer que les informations sont correctes</b>
           </p>
-          <v-ons-button @click="modify" :disabled="noTreeValue" style="margin: 6px 0">Modifier</v-ons-button>
-          <v-ons-button :disabled="validated || noTreeValue" @click="validate" style="margin: 6px 0">Confirmer</v-ons-button>
-          <v-ons-button v-if="allowImport && !fromOSM && osmUpdates" @click="uploadToOSM" style="margin: 6px 0">Envoyer vers OSM</v-ons-button>
+          <v-ons-button @click="modify" :disabled="noTreeValue" style="margin: 6px">Modifier</v-ons-button>
+          <v-ons-button :disabled="validated || noTreeValue" @click="validate" style="margin: 6px">Confirmer</v-ons-button>
+          <v-ons-button v-if="allowImport && !fromOSM && osmUpdates" @click="uploadToOSM" style="margin: 6px">Envoyer vers OSM</v-ons-button>
 
-          <v-ons-button v-if="visualize" @click="visualizeReleve" style="margin: 6px 0">Voir</v-ons-button>
+          <v-ons-button v-if="visualize" @click="visualizeReleve" style="margin: 6px">Voir</v-ons-button>
         </section>
         <section style="margin: 16px">
           <p class="center">
@@ -50,11 +50,11 @@
         </section>
         <section v-if="!fromOSM" style="margin: 16px">
           <p class="center">Supprimer le relevé, cette opération est définitive!</p>
-          <v-ons-button @click="removeObs" :disabled="(!allowRemove)" style="margin: 6px 0">Supprimer</v-ons-button>
+          <v-ons-button @click="removeObs" :disabled="(!allowRemove)" style="margin: 6px">Supprimer</v-ons-button>
         </section>
         <section v-if="fromOSM && osmUpdates" style="margin: 16px">
           <p class="center">Renvoyer le relevé sur OSM</p>
-          <v-ons-button @click="uploadAndRemove" style="margin: 6px 0">Renvoyer vers OSM</v-ons-button>
+          <v-ons-button @click="uploadAndRemove" style="margin: 6px">Renvoyer vers OSM</v-ons-button>
         </section>
 
         <section v-if="releve.prev.length>0" style="margin: 16px">
@@ -90,6 +90,12 @@
     </ons-card>
   </v-ons-page>
 </template>
+<style>
+.card--material__content{
+  color:black;
+}
+</style>
+
 <script>
 import SimplePage from "./SimplePage.vue";
 import uploadObservationToOSM from "../js/osmPost"

@@ -97,10 +97,6 @@
         <l-tile-layer :url="url" :options="mapOptions" :attribution="attribution"/>
       </l-map>
 
-      <v-ons-card>
-        <v-ons-button @click="centerMap">Centrer carte</v-ons-button>
-      </v-ons-card>
-
       <v-ons-alert-dialog modifier="rowfooter" :visible.sync="missionOver">
         <span slot="title">{{ $t('missionOverTitle') }}</span>
         {{ $t('missionOverDesc') }}
@@ -326,9 +322,6 @@ export default {
           .filter(value => !extractContributor(value).includes(this.userID));
       return [];
     },
-    tempMarker() {
-      return this.$store.state.osmData.tempMarker;
-    },
     observationsOtherDone() {
       if (this.verification)
         return this.$store.state.releve.releves
@@ -337,10 +330,9 @@ export default {
           .filter(value => extractContributor(value).includes(this.userID));
       return [];
     },
-    tempSuppressed() {
-      return this.$store.state.osmData.tempSuppressed;
-    },
     osmData() {
+      if(!this.showOSM)
+        return []
       let importedObs = this.observationsFromOSM.map(val => val.nodeId);
       return this.$store.state.osmData.data
         .filter(val => !importedObs.includes(val.id.replace('node/','')))

@@ -115,13 +115,13 @@
       <v-ons-button
         @click="complete"
         :disabled="releve.identificationValue.success || !hasImage"
-        style="margin: 6px 0"
+        style="margin: 6px"
       >Valider</v-ons-button>
-      <v-ons-button modifier="outline" @click="cancel" style="margin: 6px 0">Retour</v-ons-button>
+      <v-ons-button modifier="outline" @click="cancel" style="margin: 6px">Retour</v-ons-button>
     </section>
       <section style="margin: 16px" v-if="isGod">
           <p class="center">Supprimer l'exercice d'identification</p>
-          <v-ons-button @click="removeObs"  style="margin: 6px 0">Supprimer</v-ons-button>
+          <v-ons-button @click="removeObs"  style="margin: 6px">Supprimer</v-ons-button>
         </section>
   </v-ons-page>
 </template>
