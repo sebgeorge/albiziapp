@@ -5,6 +5,9 @@ export default {
 
     validate: "Validate",
     back: "Back",
+    specie:"Specie",
+    genus:"Genus",
+    common:"Common",
 
     // APPTABBAR
 
@@ -40,6 +43,12 @@ export default {
     recordsDone: "Records done",
     newTrophy: "New trophy",
     timedActivity: "A timed activity has just begun !",
+    missionCompleted: "You have completed the mission, thank you for participating!",
+    helpMessageNoGenus: "You have to fill the field 'Genus' of a record to progress in the current activity",
+    helpMessageNoSpecie: "You have to fill the field 'Specie' of a record to progress in the current activity",
+    helpMessageBadGenus: "You have already performed an action with this genus in the current activity",
+    helpMessageBadSpecie: "You have already performed an action with this specie in the current activity",
+    newStatus: "You have acquired a new status",
 
     //MAP
 
@@ -77,6 +86,9 @@ export default {
     recordModification: "record modification by",
     identificationDoneBy: "Identifications done by",
     userRecord: "User record :",
+    allowOSMModif:"Allow OSM modification",
+    restoreMission: "Restore mission",
+    restore: "Restore",
 
     //ARBORETUM
 
@@ -115,7 +127,28 @@ export default {
     commonName:"Common name",
     tap:"Tap to take a picture",
     remove:"Remove picture",
-    change:"Change picture"
+    change:"Change picture",
+
+    //SIMPLEPAGE
+
+    newRecord:"New record",
+    modifyRecord:"Modify a record",
+    confidence:"Confidence",
+    noTree:"Tree not present",
+    sendOSM:"Send to OSM",
+    save:"Save",
+    cancel:"Cancel",
+
+    //RELEVEOSM
+
+    record:"Record",
+    recordAuthor: "Record author",
+    lastModif: "Last modification by",
+    importedRecord: "The record as been imported into Albiziapp",
+    importAlbiziapp: "Import into Albiziapp",
+    deleteOSMTree: "Delete OSM Tree"
+
+    //RELEVE
 
   },
   fr: {
@@ -124,6 +157,9 @@ export default {
 
     validate: "Valider",
     back: "Retour",
+    specie:"Espèce",
+    genus:"Genre",
+    common:"Vernaculaire",
     
     // APPTABBAR
 
@@ -158,6 +194,12 @@ export default {
     recordsDone: "Relevés effectués",
     newTrophy: "Nouveau trophée",
     timedActivity: "Une activité chronométrée vient de commencer !",
+    missionCompleted: "Vous avez terminé la mission, merci d'avoir participé !",
+    helpMessageNoGenus:"Vous devez renseigner le champ 'Genre' d'un relevé pour progresser dans l'activité",
+    helpMessageNoSpecie:"Vous devez renseigner le champ 'Espèce' d'un relevé pour progresser dans l'activité",
+    helpMessageBadGenus:"Vous avez déja réalisé une action avec ce genre dans l'activité en cours",
+    helpMessageBadSpecie:"Vous avez déja réalisé une action avec cette espèce dans l'activité en cours",
+    newStatus: "Vous avez acquis un nouveau status",
 
     //MAP
 
@@ -195,6 +237,9 @@ export default {
     recordModification: "modification du relevé par",
     identificationDoneBy: "Identifications effectuées par",
     useRecord: "Relevé utilisateur :",
+    allowOSMModif:"Autoriser modification d'OSM",
+    restoreMission: "Restaurer mission",
+    restore: "Restaurer",
 
     //ARBORETUM
 
@@ -234,7 +279,28 @@ export default {
     commonName:"Nom vernaculaire",
     tap:"Appuyer pour prendre une photo",
     remove:"Supprimer photo",
-    change:"Modifier photo"
+    change:"Modifier photo",
+
+    //SIMPLEPAGE
+
+    newRecord:"Nouveau relevé",
+    modifyRecord:"Modifier un relevé",
+    confidence:"Confiance",
+    noTree:"Arbre non présent",
+    sendOSM:"Envoyer vers OSM",
+    save:"Enregistrer",
+    cancel:"Annuler",
+
+    //RELEVEOSM
+
+    record:"Relevé",
+    recordAuthor: "Auteur du relevé",
+    lastModif: "Dernière modification par",
+    importedRecord: "Le relevé a été importé dans Albiziapp",
+    importAlbiziapp: "Importer dans Albiziapp",
+    deleteOSMTree: "Supprimer l'arbre d'OSM"
+
+    //RELEVE
 
 
   }

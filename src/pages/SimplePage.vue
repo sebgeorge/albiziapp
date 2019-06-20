@@ -6,8 +6,8 @@
       </div>
     </v-ons-toolbar>
     <v-ons-list>
-      <v-ons-list-header class="head" v-if="!modify">Nouveau relevé</v-ons-list-header>
-      <v-ons-list-header class="head" v-if="modify">Modifier un relevé</v-ons-list-header>
+      <v-ons-list-header class="head" v-if="!modify">{{ $t('newRecord') }}</v-ons-list-header>
+      <v-ons-list-header class="head" v-if="modify">{{ $t('modifyRecord') }}</v-ons-list-header>
       <v-ons-list-title
         style="margin-top: 10px;
     font-size: 15px;
@@ -19,7 +19,7 @@
           <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>
         </div>
         <div class="center">
-          <label class="tag">Espèce</label>
+          <label class="tag">{{ $t('specie') }}</label>
           <v-select
           class="selector"
             v-model="releve.specie"
@@ -27,7 +27,7 @@
             :reduce="option=>option.espece"
             :options="specieVerSource"
             label="espece"
-            placeholder="Nom de l'espèce"
+            :placeholder=placeholder.specieName
             style="width: -webkit-fill-available;"
           ></v-select>
         </div>
@@ -37,7 +37,7 @@
           <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>
         </div>
         <div class="center">
-          <label class="tag">Genre</label>
+          <label class="tag">{{ $t('genus') }}</label>
           <v-select
             class="selector"
             v-model="releve.genus"
@@ -45,7 +45,7 @@
             :options="genusList"
             :reduce="option=>option.name"
             label="name"
-            placeholder="Nom du genre"
+            :placeholder=placeholder.genusName
             style="width: -webkit-fill-available;"
           ></v-select>
         </div>
@@ -54,7 +54,7 @@
         <div class="left">
           <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>
         </div>
-        <label class="tag">Vernaculaire</label>
+        <label class="tag">{{ $t('common') }}</label>
         <v-select
           class="selector"
           v-model="releve.common"
@@ -62,7 +62,7 @@
           ref="common"
           :reduce="option=>option.vernaculaire"
           style="width: -webkit-fill-available;"
-          placeholder="Nom vernaculaire"
+          :placeholder=placeholder.commonName
           :options="specieVerSource"
         ></v-select>
       </v-ons-list-item>
@@ -71,7 +71,7 @@
           <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>
         </div>
         <div class="center">
-          <label class="tag">Confiance</label>
+          <label class="tag">{{ $t('confidence') }}</label>
           <v-ons-select :disabled="noTree" class="selector" v-model="releve.confidence">
             <option
               v-for="(confidence,index) in confidenceValues"
@@ -84,7 +84,7 @@
 
       <v-ons-list-item v-if="validate">
         <div class="left">
-          <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>Arbre non présent
+          <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>{{ $t('noTree') }}
         </div>
         <div class="center" style="margin-left:15px;">
           <v-ons-switch @change="releve.noTree=noTree" v-model="noTree"></v-ons-switch>
@@ -110,9 +110,9 @@
       </v-ons-list-item>
     </v-ons-list>
     <section style="margin: 16px">
-      <v-ons-button v-if="!modify && osmUpdates" @click="uploadToOSM" style="margin: 6px 0">Envoyer vers OSM</v-ons-button>
-      <v-ons-button @click="complete" style="margin: 6px 0">Enregistrer</v-ons-button>
-      <v-ons-button modifier="outline" @click="cancel" style="margin: 6px 0">Annuler</v-ons-button>
+      <v-ons-button v-if="!modify && osmUpdates" @click="uploadToOSM" style="margin: 6px 0">{{ $t('sendOSM') }}</v-ons-button>
+      <v-ons-button @click="complete" style="margin: 6px 0">{{ $t('save') }}</v-ons-button>
+      <v-ons-button modifier="outline" @click="cancel" style="margin: 6px 0">{{ $t('cancel') }}</v-ons-button>
     </section>
   </v-ons-page>
 </template>
@@ -160,6 +160,11 @@ export default {
       genusList: genusList,
       modify: false,
       validate: false,
+      placeholder: {
+        specieName: this.$t('specieName'),
+        genusName: this.$t('genusName'),
+        commonName: this.$t('commonName')
+      },
       customStrings:{ 
         drag: 'Prendre photo',
         change: this.$t('change'),

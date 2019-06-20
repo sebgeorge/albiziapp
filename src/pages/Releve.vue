@@ -7,10 +7,10 @@
       <div class="content">
         <ons-list>
           <ons-list-header>Information</ons-list-header>
-          <ons-list-item v-show="releve.authorName">Auteur du relevé : {{releve.authorName}}</ons-list-item>
-          <ons-list-item v-show="releve.specie">Espèce : {{releve.specie}}</ons-list-item>
-          <ons-list-item v-show="releve.genus">Genre : {{releve.genus}}</ons-list-item>
-          <ons-list-item v-show="releve.common">Nom commun : {{releve.common}}</ons-list-item>
+          <ons-list-item v-show="releve.authorName">{{ $t('recordAuthor') }} : {{releve.authorName}}</ons-list-item>
+          <ons-list-item v-show="releve.specie">{{ $t('specie') }} : {{releve.specie}}</ons-list-item>
+          <ons-list-item v-show="releve.genus">{{ $t('genus') }} : {{releve.genus}}</ons-list-item>
+          <ons-list-item v-show="releve.common">{{ $t('common') }} : {{releve.common}}</ons-list-item>
           <ons-list-item v-show="releve.height">Hauteur : {{releve.height}}</ons-list-item>
           <ons-list-item v-show="releve.crown">Diamètre de la couronne : {{releve.crown}}</ons-list-item>
           <ons-list-item v-show="releve.confidence">Degré de confiance de l'observateur : {{releve.confidence}}</ons-list-item>
@@ -21,7 +21,7 @@
           >Nombre de validations : {{releve.validation.length-1}}</ons-list-item>
           <ons-list-item
             v-show="releve.modifierName"
-          >Dernière modification par : {{releve.modifierName}}</ons-list-item>
+          >{{ $t('lastModif') }} : {{releve.modifierName}}</ons-list-item>
         </ons-list>
         <img v-show="releve.image" :src="releve.image" style="width: 100%">
 

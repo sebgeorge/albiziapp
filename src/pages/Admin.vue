@@ -11,7 +11,7 @@
           </div>
         </v-ons-list-item>
         <v-ons-list-item>
-          <div class="center">Authoriser modification d'OSM</div>
+          <div class="center">{{ $t('allowOSMModif')}}</div>
           <div class="right">
             <v-ons-switch v-model="identCheck" @change="osmUpdates"></v-ons-switch>
           </div>
@@ -77,9 +77,9 @@
           </div>
         </v-ons-list-item>
         <v-ons-list-item>
-          <div class="center">Restore mission</div>
+          <div class="center">{{ $t('restoreMission') }}</div>
           <div class="right">
-            <v-ons-button @click="restoreMission">Restore</v-ons-button>
+            <v-ons-button @click="restoreMission">{{ $t('restore') }}</v-ons-button>
           </div>
         </v-ons-list-item>
 
