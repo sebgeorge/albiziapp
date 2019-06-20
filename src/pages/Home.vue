@@ -1,5 +1,5 @@
 <template>
-  <v-ons-page>  
+  <v-ons-page> 
 
     <v-ons-card v-show="!$store.state.user.id">
       <div  class="title">{{ $t('authenticate')}}</div>
@@ -95,6 +95,9 @@ export default {
     EventBus.$on('displayHelpMessage', param => {
       this.displayHelpMessage(param)
     });
+    EventBus.$on('displayNewStatusMessage', param => {
+      this.displayNewStatusMessage(param)
+    });
   },
   computed: {
     gamificationMode() {
@@ -175,7 +178,8 @@ export default {
       'timeLeft': {
         handler: function(newValue, oldValue){
           if (newValue == 0) {
-            this.activityEnd('done')
+            let status = this.goal ? "failed" : "done"
+            this.activityEnd(status)
           }
         },
         deep : true
@@ -215,6 +219,17 @@ export default {
         });
       }
      
+    },
+    displayNewStatusMessage(status) {
+      if(status && status.length>0){
+        let toast = this.$toasted.show("Vous avez acquis un nouveau status : " + _.last(status).name + "!", { 
+                fullWidth : true,
+                position: "bottom-center", 
+                duration : 5000,
+                icon : "person"
+          });
+
+      }
     },
     skipActivityPressed() {
       this.activityEnd('skipped')
@@ -409,7 +424,7 @@ export default {
       return res
     },
     displayActivity(statut, intitule) {
-      if (statut == 'skipped') {
+      if (statut == 'skipped' || statut == 'failed') {
         return "❌ " + intitule
       } else if (statut == 'toDo') {
         return intitule

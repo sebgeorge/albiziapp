@@ -154,7 +154,9 @@ import speciesList from "../js/species_ver.js";
 export default {
   data() {
     return {
-      releve: {},
+      releve: {
+        confidence: "Non renseignée"
+      },
       specie: "",
       noTree: false,
       selectedHeight: 0,
