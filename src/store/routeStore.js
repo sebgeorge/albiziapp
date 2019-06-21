@@ -19,7 +19,11 @@ export default {
         confidenceValues: [
           'Non renseignée',
           'Peu confiant',
-          'Confiant',
+          'Confiant'
+
+          /*'unspecified',
+          'notVeryConfident',
+          'confident'*/
         ]
       },
       mutations: {

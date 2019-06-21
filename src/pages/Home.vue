@@ -28,11 +28,11 @@
                   {{completion}} / {{goal}}
                 </VmProgress>
                 <div v-else>
-                 {{ $t('tracingsDone')}} : {{completion}}
+                 {{ $t('recordsDone')}} : {{completion}}
                 </div>
               </v-ons-col>  
               <v-ons-col width="10%">
-               <v-ons-icon icon="fa-angle-double-right" @click="showDialog = true" size="30px"></v-ons-icon> 
+               <v-ons-icon icon="times" @click="showDialog = true" size="30px"></v-ons-icon> 
              </v-ons-col>
             </v-ons-row> 
             <div v-if="timeLeft!=-1">
@@ -48,7 +48,7 @@
     </v-card>
 
     <v-ons-card v-show="$store.state.user.id && !currentActivity"> 
-      <p>Vous avez terminé la mission, merci d'avoir participé !</p>  
+      <p>{{ $t('missionCompleted') }}</p>  
     </v-ons-card>
 
     <v-ons-alert-dialog modifier="rowfooter"
@@ -178,7 +178,7 @@ export default {
       'timeLeft': {
         handler: function(newValue, oldValue){
           if (newValue == 0) {
-            let status = this.goal ? "failed" : "done"
+            let status = this.goal == -1 ? "done" : "failed"
             this.activityEnd(status)
           }
         },
@@ -198,16 +198,16 @@ export default {
       let {option, releve} = param
       let message = ""
       if ((option == "DIFFERENTGENUS" || option == "GENUS") && releve.genus == null) {
-         message = "Vous devez renseigner le champ 'Genre' d'un relevé pour progresser dans l'activité"
+         message = this.$t('helpMessageNoGenus')
       }
       if ((option == "DIFFERENTSPECIE" || option == "SPECIE") && releve.specie == null) {
-         message = "Vous devez renseigner le champ 'Espèce' d'un relevé pour progresser dans l'activité"
+         message = this.$t('helpMessageNoSpecie')
       }
       if (option == "DIFFERENTGENUS" && releve.genus) {
-         message = "Vous avez déja réalisé une action avec ce genre dans l'activité en cours"
+         message = this.$t('helpMessageBadGenus')
       }
       if (option == "DIFFERENTSPECIE" && releve.specie) {
-         message = "Vous avez déja réalisé une action avec cette espèce dans l'activité en cours"
+         message = this.$t('helpMessageBadSpecie')
       }
 
       if (message != "") {
@@ -222,7 +222,7 @@ export default {
     },
     displayNewStatusMessage(status) {
       if(status && status.length>0){
-        let toast = this.$toasted.show("Vous avez acquis un nouveau status : " + _.last(status).name + "!", { 
+        let toast = this.$toasted.show(this.$t('newStatus') + " : " + _.last(status).name + "!", { 
                 fullWidth : true,
                 position: "bottom-center", 
                 duration : 5000,

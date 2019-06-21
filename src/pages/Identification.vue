@@ -2,11 +2,11 @@
   <v-ons-page>
     <v-ons-toolbar>
       <div class="left">
-        <v-ons-back-button>Back</v-ons-back-button>
+        <v-ons-back-button>{{ $t('back') }}</v-ons-back-button>
       </div>
     </v-ons-toolbar>
 
-    <v-ons-list-header>Clef d'identification</v-ons-list-header>
+    <v-ons-list-header>{{ $t('identificationKey') }}</v-ons-list-header>
 
     <v-ons-list>
       <vs-on-list-item>

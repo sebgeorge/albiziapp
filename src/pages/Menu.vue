@@ -1,6 +1,6 @@
 <template>
   <v-ons-page modifier="white">
-    <v-ons-list-title>Access</v-ons-list-title>
+    <v-ons-list-title>{{ $t('access') }}</v-ons-list-title>
     <v-ons-list>
       <v-ons-list-item
         v-for="(item, index) in access"
@@ -57,7 +57,7 @@ export default {
        return
       }
       this.$ons.notification
-        .prompt("Mot de passe", {})
+        .prompt(this.$t('password'), {})
         .then(function(response) {
           if (response == "kraken") {
             this.$store.commit("navigator/push", {
@@ -74,7 +74,7 @@ export default {
             this.$store.commit('user/setAdmin',true)
             this.$store.commit("splitter/toggle");
           } else {
-            this.$ons.notification.alert("Votre tentative d'intrusion a été enregistré")
+            this.$ons.notification.alert(this.$t('attemptIntrusion'))
           }
     }.bind(this))
   }},
@@ -95,7 +95,7 @@ return this.$store.state.user.isAdmin
           icon: "ion-home"
         },
         {
-          title: this.$t('tracingsMenu'),
+          title: this.$t('recordsMenu'),
           icon: "ion-edit"
         },
         {

@@ -3,22 +3,22 @@
     <custom-toolbar backLabel="Retour"></custom-toolbar>
     <div class="content">
       <v-ons-list>
-        <v-ons-list-title>{{ $t('administratorTracings') }}</v-ons-list-title>
+        <v-ons-list-title>{{ $t('administratorRecords') }}</v-ons-list-title>
         <v-ons-list-item>
-          <div class="center">{{ $t('identificationTracings') }}</div>
+          <div class="center">{{ $t('identificationRecords') }}</div>
           <div class="right">
             <v-ons-switch v-model="identCheck" @change="setIdentificationMode"></v-ons-switch>
           </div>
         </v-ons-list-item>
         <v-ons-list-item>
-          <div class="center">Show OSM data</div>
+          <div class="center">{{ $t('showOSMData') }}</div>
           <div class="right">
             <v-ons-switch v-model="showOSM"></v-ons-switch>
           </div>
         </v-ons-list-item>
 
         <v-ons-list-item>
-          <div class="center">Authoriser modification d'OSM</div>
+          <div class="center">{{ $t('allowOSMModif') }}</div>
           <div class="right">
             <v-ons-switch v-model="identCheck" @change="osmUpdates"></v-ons-switch>
           </div>
@@ -44,7 +44,7 @@
           </div>
         </v-ons-list-item>
         <v-ons-list-item>
-          <div class="center">{{ $t('tracingVerificationMode') }}</div>
+          <div class="center">{{ $t('recordVerificationMode') }}</div>
           <div class="right">
             <v-ons-switch v-model="verificationMode"></v-ons-switch>
           </div>
@@ -71,7 +71,7 @@
         </v-ons-list-item>
 
         <v-ons-list-item>
-          <div class="center">Upload</div>
+          <div class="center">{{ $t('upload') }}</div>
           <div class="right">
             <file-upload
               accept=".json"
@@ -84,9 +84,9 @@
           </div>
         </v-ons-list-item>
         <v-ons-list-item>
-          <div class="center">Restore mission</div>
+          <div class="center">{{ $t('restoreMission') }}</div>
           <div class="right">
-            <v-ons-button @click="restoreMission">Restore</v-ons-button>
+            <v-ons-button @click="restoreMission">{{ $t('restore') }}</v-ons-button>
           </div>
         </v-ons-list-item>
 
@@ -113,7 +113,7 @@
               v-bind:key="index+'verifs'"
             >
               <div class="center">
-                <b>{{ $t('originTracing') }}</b>
+                <b>{{ $t('originRecord') }}</b>
                 {{verif.specie}}
                 <v-ons-button @click="visualizeReleve(verif)" style="margin-left:40px;">Voir</v-ons-button>
               </div>
@@ -121,8 +121,8 @@
                 <span>
                   <b>{{ $t('userAction') }}</b>
                 </span>
-                <span v-if="verif.validated">{{ $t('tracingValidation') }}</span>
-                <span v-if="!verif.validated">{{ $t('tracingModification') }} {{verif.userSpecie}}</span>
+                <span v-if="verif.validated">{{ $t('recordValidation') }}</span>
+                <span v-if="!verif.validated">{{ $t('recordModification') }} {{verif.userSpecie}}</span>
               </div>
             </v-ons-list-item>
           </v-ons-list>
@@ -143,13 +143,13 @@
               v-bind:key="index+'ident'"
             >
               <div class="center">
-                <b>{{ $t('originTracing') }}</b>
+                <b>{{ $t('originRecord') }}</b>
                 {{ident.specie}} 
                 <v-ons-button @click="visualizeReleve(ident)" style="margin-left:40px;">Voir</v-ons-button>
               </div>
               <div class="left" style="display:block">
                 <span>
-                  <b>{{ $t('userTracing') }} {{ident.userSpecie}}</b>
+                  <b>{{ $t('userRecord') }} {{ident.userSpecie}}</b>
                 </span>
               </div>
             </v-ons-list-item>
@@ -230,7 +230,7 @@ export default {
     }
     ,
     error() {
-      this.$toasted.show("Votre fichier n'est pas un JSON valide", {
+      this.$toasted.show(this.$t('invalidJSON'), {
         theme: "bubble",
         position: "top-center",
         duration: 5000

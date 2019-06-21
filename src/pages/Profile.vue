@@ -5,7 +5,7 @@
 			 	<v-ons-card v-if="status.length>0">
 	    	<v-ons-row @click='displayStatusDetails'>
 	    		<v-ons-col>
-	        	Status actuel : {{ status[status.length -1].name }}
+	        	{{ $t('actualStatus') }} : {{ status[status.length -1].name }}
 	    		</v-ons-col>
 	    		<v-ons-col style="text-align: right" >
 	        	<v-ons-icon icon="fa-info-circle" style="color:#cca108"></v-ons-icon> 

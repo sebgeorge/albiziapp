@@ -2,19 +2,19 @@
   <v-ons-page>
     <v-ons-toolbar>
       <div class="left">
-        <v-ons-back-button>Retour</v-ons-back-button>
+        <v-ons-back-button>{{ $t('back') }}</v-ons-back-button>
       </div>
     </v-ons-toolbar>
     <v-ons-card>
-      <div class="title">Exercice d'identification</div>
+      <div class="title">{{ $t('identificationExercise') }}</div>
       <div class="content">
-        Vous devez identifier cet arbre
-        précédemment identifié par un expert. <b>Prenez au moins une photo </b>du relevé et remplissez les champs le mieux possible. Vous aurez la bonne réponse
-        après avoir soumis votre identification
+        {{ $t('exerciseDescription1') }}
+        <b> {{ $t('exerciseDescription2') }} </b>
+        {{ $t('exerciseDescription3') }}
       </div>
     </v-ons-card>
     <v-ons-list>
-      <v-ons-list-header>Identifier un arbre</v-ons-list-header>
+      <v-ons-list-header>{{ $t('identifyTree') }}</v-ons-list-header>
       <v-ons-list-item>
         <div class="left">
           <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>
@@ -27,7 +27,7 @@
 
             :options="specieVerSource"
             label="espece"
-            placeholder="Nom de l'espèce"
+            :placeholder=placeholder.specieName
             style="width: -webkit-fill-available;"
           ></v-select>
         </div>
@@ -43,7 +43,7 @@
             :reduce="option=>option.name"
             :options="genusList"
             label="name"
-            placeholder="Nom du genre"
+            :placeholder=placeholder.genusName
             style="width: -webkit-fill-available;"
           ></v-select>
         </div>
@@ -59,7 +59,7 @@
           label="vernaculaire"
           ref="common"
           style="width: -webkit-fill-available;"
-          placeholder="Nom vernaculaire"
+          :placeholder=placeholder.commonName
           :options="commonList"
         ></v-select>
       </v-ons-list-item>
@@ -77,12 +77,7 @@
           capture="camera"
           size="10"
           buttonClass="btn"
-          :customStrings="{
-           drag: 'Prendre photo',
-          change: 'Modifier photo', // Text only
-          remove: 'Supprimer photo', // Text only
-          tap: 'Appuyer pour prendre une photo'
-          }"
+          :customStrings=customStrings
         ></picture-input>
       </v-ons-list-item>
       <v-ons-list-item v-if="releve.identificationValue.success && releve">
@@ -96,19 +91,19 @@
 
     <v-ons-list v-show="releve.identificationValue.success">
       <v-ons-list-item>
-        <div class="center">Espèce identifiée par l'expert : {{releve.specie}}</div>
-        <div v-if="releve.specie && releve.specie==releve.identificationValue.specie" class="right">Bravo!</div>
-        <div v-else class="right">Raté!</div>
+        <div class="center">{{ $t('expertSpecie') }} : {{releve.specie}}</div>
+        <div v-if="releve.specie && releve.specie==releve.identificationValue.specie" class="right">{{ $t('bravo') }}</div>
+        <div v-else class="right">{{ $t('missed') }}</div>
       </v-ons-list-item>
       <v-ons-list-item>
-        <div class="center">Genre identifié par l'expert : {{releve.genus}}</div>
-        <div v-if="releve.genus && releve.genus==releve.identificationValue.genus" class="right">Bravo!</div>
-        <div v-else class="right">Raté!</div>
+        <div class="center">{{ $t('expertGenus') }} : {{releve.genus}}</div>
+        <div v-if="releve.genus && releve.genus==releve.identificationValue.genus" class="right">{{ $t('bravo') }}</div>
+        <div v-else class="right">{{ $t('missed') }}</div>
       </v-ons-list-item>
       <v-ons-list-item>
-        <div class="center">Nom vernaculaire identifiée par l'expert : {{releve.common}}</div>
-        <div v-if="releve.common && releve.common==releve.identificationValue.common" class="right">Bravo!</div>
-        <div v-else class="right">Raté!</div>
+        <div class="center">{{ $t('expertCommon') }} : {{releve.common}}</div>
+        <div v-if="releve.common && releve.common==releve.identificationValue.common" class="right">{{ $t('bravo') }}</div>
+        <div v-else class="right">{{ $t('missed') }}</div>
       </v-ons-list-item>
     </v-ons-list>
     <section style="margin: 16px">
@@ -116,12 +111,12 @@
         @click="complete"
         :disabled="releve.identificationValue.success || !hasImage"
         style="margin: 6px"
-      >Valider</v-ons-button>
-      <v-ons-button modifier="outline" @click="cancel" style="margin: 6px">Retour</v-ons-button>
+      >{{ $t('validate') }}</v-ons-button>
+      <v-ons-button modifier="outline" @click="cancel" style="margin: 6px">{{ $t('back') }}</v-ons-button>
     </section>
       <section style="margin: 16px" v-if="isGod">
-          <p class="center">Supprimer l'exercice d'identification</p>
-          <v-ons-button @click="removeObs"  style="margin: 6px">Supprimer</v-ons-button>
+          <p class="center">{{ $t('deleteIdentification') }}</p>
+          <v-ons-button @click="removeObs"  style="margin: 6px">{{ $t('delete') }}</v-ons-button>
         </section>
   </v-ons-page>
 </template>
@@ -145,7 +140,18 @@ export default {
     return {
       releve: {},
       genusList: genusList,
-      specieVerSource: speciesList
+      specieVerSource: speciesList,
+      placeholder: {
+        specieName: this.$t('specieName'),
+        genusName: this.$t('genusName'),
+        commonName: this.$t('commonName')
+      },
+      customStrings:{ 
+        drag: 'Prendre photo',
+        change: this.$t('change'),
+        remove: this.$t('remove'),
+        tap: this.$t('tap')
+      }
     };
   },
   components: {
@@ -166,7 +172,7 @@ export default {
     removeObs() {
       this.$store.dispatch("releve/remove", this.releve);
       this.$store.commit("navigator/pop");
-      this.$toasted.show("Votre relevé a été supprimé", {
+      this.$toasted.show(this.$t('deletionConfirmation'), {
         fullWidth: true,
         position: "bottom-center",
         duration: 2000
