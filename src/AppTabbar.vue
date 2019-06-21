@@ -56,7 +56,7 @@ export default {
     'lostProgression':{
       handler:function(val){
         if(val==1){
-       this.$toasted.show("La mission à été modifié, vous avez perdu votre progression", {
+       this.$toasted.show(this.$t('progressionLost'), {
           theme: "bubble",
           position: "top-center",
           duration: 5000
@@ -117,7 +117,7 @@ export default {
       channel.bind(
         "progression_lost",
         function(data) {
-        this.$toasted.show("Vous allez être deconnecté suite à un changement de la mission", {
+        this.$toasted.show(this.$t('missionChange'), {
           theme: "bubble",
           position: "top-center",
           duration: 5000,
@@ -238,7 +238,7 @@ export default {
           theme: red
         },       
         {
-          label: this.$t('relevés'),
+          label: this.$t('records'),
           icon: "ion-edit",
           page: Releve,
           theme: purple,

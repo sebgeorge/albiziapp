@@ -12,7 +12,7 @@
         style="margin-top: 10px;
     font-size: 15px;
     font-weight: bolder;"
-      >Identification</v-ons-list-title>
+      >{{ $t('identification') }}</v-ons-list-title>
 
       <v-ons-list-item>
         <div class="left">
@@ -151,12 +151,12 @@ export default {
   data() {
     return {
       releve: {
-        confidence: "Non renseignée"
+        confidence: "Non renseignée" //this.$t('unspecified')
       },
       specie: "",
       noTree: false,
       selectedHeight: 0,
-      selectedConfidence: "Non renseignée",
+      selectedConfidence: "Non renseignée", //this.$t('unspecified')
       selectedCrown: 0,
       commonList:commonList,
       specieVerSource: speciesList,
@@ -186,6 +186,12 @@ export default {
 
     confidenceValues() {
       return this.$store.state.commonData.confidenceValues;
+
+      /*var confidenceValues = []
+      for (let confidenceValue of this.$store.state.commonData.confidenceValues) {
+        confidenceValues.push(this.$t(confidenceValue))
+      }
+      return confidenceValues*/
     },
     completed() {
       if (this.genus.length) {

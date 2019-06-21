@@ -9,13 +9,20 @@ export default {
     genus:"Genus",
     common:"Common",
 
+    /*confidenceLevels*/
+    unspecified:"Unspecified",
+    notVeryConfident:"Not very confident",
+    confident: "Confident",
+
     // APPTABBAR
 
     map: "Map",
     mission: "Mission",
     score: "Score",
     arboretum: "Arboretum",
-    relevés: "Records",
+    records: "Records",
+    missionChange:"You will be disconnected because of a mission change",
+    progressionLost: "The mission has been modified, you have lost your progress",
 
     //MENU
 
@@ -34,7 +41,7 @@ export default {
 
     authenticate: "Authenticate!",
     welcome: "Welcome into Albiziapp",
-    authenticatePlease : "Thanks to anthencicate",
+    authenticatePlease : "Thanks to authenticate",
     authenticateButton : "AUTHENTICATE",
     currentMission: "Current mission",
     skipActivityTitle: "Are you sure you want to skip this activity ?",
@@ -149,6 +156,7 @@ export default {
     sendOSM:"Send to OSM",
     save:"Save",
     cancel:"Cancel",
+    identification:"Identification",
 
     //RELEVEOSM
 
@@ -203,6 +211,11 @@ export default {
     specie:"Espèce",
     genus:"Genre",
     common:"Vernaculaire",
+
+    /*confidenceLevels*/
+    unspecified:"Non renseignée",
+    notVeryConfident:"Peu confiant",
+    confident: "Confiant",
     
     // APPTABBAR
 
@@ -210,7 +223,9 @@ export default {
     mission: "Mission",
     score: "Score",
     arboretum: "Arboretum",
-    relevés: "Relevés",
+    records: "Relevés",
+    missionChange:"Vous allez être déconnecté suite à un changement de mission",
+    progressionLost: "La mission a été modifiée, vous avez perdu votre progression",
 
     //MENU
 
@@ -344,6 +359,7 @@ export default {
     sendOSM:"Envoyer vers OSM",
     save:"Enregistrer",
     cancel:"Annuler",
+    identification:"Identification",
 
     //RELEVEOSM
 
