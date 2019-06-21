@@ -60,7 +60,7 @@
           ref="common"
           style="width: -webkit-fill-available;"
           :placeholder=placeholder.commonName
-          :options="specieVerSource"
+          :options="commonList"
         ></v-select>
       </v-ons-list-item>
 
@@ -133,7 +133,8 @@ import PictureInput from "vue-picture-input";
 import imageCompression from "browser-image-compression";
 import Identification from "./Identification.vue";
 import genusList from "../js/genus.js";
-import speciesList from "../js/species_ver.js";
+import speciesList from "../js/species_ver_old.js"
+import commonList from "../js/species_ver.js";
 export default {
   data() {
     return {
