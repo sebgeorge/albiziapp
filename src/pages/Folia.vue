@@ -10,7 +10,7 @@
         </div>
       </v-ons-card>
       <v-ons-card v-if="foliaStarted">
-        <div class="title">Identification via Folia</div>
+        <div class="title">{{ $t('identificationViaFolia') }}</div>
         <div class="content">
           <div style="position:relative;">
             <p>

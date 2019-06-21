@@ -1,6 +1,6 @@
 <template>
   <v-ons-page modifier="white">
-    <v-ons-list-title>Access</v-ons-list-title>
+    <v-ons-list-title>{{ $t('access') }}</v-ons-list-title>
     <v-ons-list>
       <v-ons-list-item
         v-for="(item, index) in access"

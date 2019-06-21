@@ -6,7 +6,7 @@
       </div>
     </v-ons-toolbar>
 
-    <v-ons-list-header>Clef d'identification</v-ons-list-header>
+    <v-ons-list-header>{{ $t('identificationKey') }}</v-ons-list-header>
 
     <v-ons-list>
       <vs-on-list-item>

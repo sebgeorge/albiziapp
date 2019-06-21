@@ -71,7 +71,7 @@
         </v-ons-list-item>
 
         <v-ons-list-item>
-          <div class="center">Upload</div>
+          <div class="center">{{ $t('upload') }}</div>
           <div class="right">
             <file-upload
               accept=".json"
@@ -230,7 +230,7 @@ export default {
     }
     ,
     error() {
-      this.$toasted.show("Votre fichier n'est pas un JSON valide", {
+      this.$toasted.show(this.$t('invalidJSON'), {
         theme: "bubble",
         position: "top-center",
         duration: 5000

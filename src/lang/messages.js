@@ -19,6 +19,7 @@ export default {
 
     //MENU
 
+    access: "Access",
     missionMenu: "Current mission",
     scoreMenu: "Score",
     arboretumMenu: "My arboretum",
@@ -90,6 +91,8 @@ export default {
     restoreMission: "Restore mission",
     restore: "Restore",
     showOSMData: "Show OSM data",
+    upload: "Upload",
+    invalidJSON: "Your file is not a valid JSON",
 
     //ARBORETUM
 
@@ -103,6 +106,7 @@ export default {
 
     //FOLIA
 
+    identificationViaFolia: "Identification via Folia",
     identifyLeaf: "Identify a leaf",
     takePict: "Take a picture of a leaf and then circle the leaf",
     results: "Results",
@@ -129,6 +133,12 @@ export default {
     tap:"Tap to take a picture",
     remove:"Remove picture",
     change:"Change picture",
+    expertSpecie:"Specie identified by the expert",
+    expertGenus:"Genus identified by the expert",
+    expertCommon:"Common identified by the expert",
+    missed:"Missed!",
+    bravo: "Bravo!",
+    deleteIdentification: "Delete the identification exercise",
 
     //SIMPLEPAGE
 
@@ -147,9 +157,41 @@ export default {
     lastModif: "Last modification by",
     importedRecord: "The record as been imported into Albiziapp",
     importAlbiziapp: "Import into Albiziapp",
-    deleteOSMTree: "Delete OSM Tree"
+    deleteOSMTree: "Delete OSM Tree",
 
     //RELEVE
+
+    importedFromOSM: "Record imported from OSM",
+    heigth: "Heigth",
+    crownDiameter: "Diameter of the crown",
+    confidenceDegree: "Confidence degree of the observer",
+    usersReporting: "Users reporting this record as doubtful (without tree)",
+    nbValidation: "Number of validations",
+    modifyConfirm1:"You can",
+    modifyConfirm2:"modify",
+    modifyConfirm3:"the record",
+    modifyConfirm4:"or confirm that informations are correct",
+    modifyButton:"Modify",
+    confirmButton:"Confirm",
+    see:"See",
+    noTree1: "If no tree is present,",
+    noTree2:"you can tag this record as doubtful",
+    deleteButton:"Delete",
+    deleteDesc: "Delete the record, this operation is definitive!",
+    returnToOSM: "Return the record to OSM",
+    returnButton: "Return to OSM",
+    history: "History",
+    recordHistory: "Record history",
+    version: "Version",
+    information: "Information",
+    modificationBy: "Modification by",
+    validationConfirmation: "Your validation has been taken into account",
+    deletionConfirmation: "Your record has been deleted",
+
+    //IDENTIFICATION
+
+    identificationKey: "Identification key"
+
 
   },
   fr: {
@@ -172,6 +214,7 @@ export default {
 
     //MENU
 
+    access: "Accès",
     missionMenu: "Mission en cours",
     scoreMenu: "Score",
     arboretumMenu: "Mon arboretum",
@@ -179,7 +222,7 @@ export default {
     language: "Langue",
     logout: "Déconnexion",
     password: "Mot de passe",
-    attemptIntrusion:"Votre tentavite d'intrusion à été enregistrée",
+    attemptIntrusion:"Votre tentavite d'intrusion a été enregistrée",
 
     //HOME
 
@@ -242,6 +285,8 @@ export default {
     restoreMission: "Restaurer mission",
     restore: "Restaurer",
     showOSMData: "Montrer données OSM",
+    upload: "Upload",
+    invalidJSON: "Votre fichier n'est pas un JSON valide",
 
     //ARBORETUM
 
@@ -255,6 +300,7 @@ export default {
 
     //FOLIA
 
+    identificationViaFolia: "Identification via Folia",
     identifyLeaf: "Identifier une feuille",
     takePict: "Prenez une photo de feuille puis réalisez un tracé à l'intérieur de la feuille",
     results: "Résultats",
@@ -282,6 +328,12 @@ export default {
     tap:"Appuyer pour prendre une photo",
     remove:"Supprimer photo",
     change:"Modifier photo",
+    expertSpecie:"Espèce identifiée par l'expert",
+    expertGenus:"Genre identifié par l'expert",
+    expertCommon:"Nom vernaculaire identifié par l'expert",
+    missed:"Raté!",
+    bravo: "Bravo!",
+    deleteIdentification: "Supprimer le relevé d'identification",
 
     //SIMPLEPAGE
 
@@ -300,10 +352,40 @@ export default {
     lastModif: "Dernière modification par",
     importedRecord: "Le relevé a été importé dans Albiziapp",
     importAlbiziapp: "Importer dans Albiziapp",
-    deleteOSMTree: "Supprimer l'arbre d'OSM"
+    deleteOSMTree: "Supprimer l'arbre d'OSM",
 
     //RELEVE
 
+    importedFromOSM: "Relevé importé d'OSM",
+    heigth: "Hauteur",
+    crownDiameter: "Diamètre de la couronne",
+    confidenceDegree: "Degré de confiance de l'observateur",
+    usersReporting: "Utilisateurs déclarant ce relevé douteux (sans arbre)",
+    nbValidation: "Nombre de validations",
+    modifyConfirm1:"Vous pouvez",
+    modifyConfirm2:"modifier",
+    modifyConfirm3:"le relevé",
+    modifyConfirm4:"ou bien confirmer que les informations sont correctes",
+    modifyButton:"Modifier",
+    confirmButton:"Confirmer",
+    see:"Voir",
+    noTree1:" Si aucun arbre n'est présent,",
+    noTree2:"vous pouvez tagger ce relevé douteux",
+    deleteButton:"Supprimer",
+    deleteDesc: "Supprimer le relevé, cette opération est définitive!",
+    returnToOSM: "Renvoyer le relevé sur OSM",
+    returnButton: "Renvoyer vers OSM",
+    history: "Historique",
+    recordHistory: "Historique du relevé",
+    version: "Version",
+    information: "Information",
+    modificationBy: "Modification par",
+    validationConfirmation: "Votre validation a été prise en compte",
+    deletionConfirmation: "Votre relevé a été supprimé",
+
+    //IDENTIFICATION
+
+    identificationKey: "Clef d'identification"
 
   }
 }

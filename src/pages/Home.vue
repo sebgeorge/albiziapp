@@ -32,7 +32,7 @@
                 </div>
               </v-ons-col>  
               <v-ons-col width="10%">
-               <v-ons-icon icon="fa-angle-double-right" @click="showDialog = true" size="30px"></v-ons-icon> 
+               <v-ons-icon icon="times" @click="showDialog = true" size="30px"></v-ons-icon> 
              </v-ons-col>
             </v-ons-row> 
             <div v-if="timeLeft!=-1">
@@ -178,7 +178,7 @@ export default {
       'timeLeft': {
         handler: function(newValue, oldValue){
           if (newValue == 0) {
-            let status = this.goal ? "failed" : "done"
+            let status = this.goal == -1 ? "done" : "failed"
             this.activityEnd(status)
           }
         },
