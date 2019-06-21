@@ -63,7 +63,7 @@
           :reduce="option=>option.vernaculaire"
           style="width: -webkit-fill-available;"
           placeholder="Nom vernaculaire"
-          :options="specieVerSource"
+          :options="commonList"
         ></v-select>
       </v-ons-list-item>
       <v-ons-list-item>
@@ -150,7 +150,9 @@ import imageCompression from "browser-image-compression";
 import uploadObservationToOSM from "../js/osmPost"
 import osmUpdate from "../js/osmUpdate"
 import genusList from "../js/genus.js";
-import speciesList from "../js/species_ver.js";
+import speciesList from "../js/species_ver_old.js"
+import commonList from "../js/species_ver.js";
+
 export default {
   data() {
     return {
@@ -162,6 +164,7 @@ export default {
       selectedHeight: 0,
       selectedConfidence: "Non renseignée",
       selectedCrown: 0,
+      commonList:commonList,
       specieVerSource: speciesList,
       genusList: genusList,
       modify: false,
