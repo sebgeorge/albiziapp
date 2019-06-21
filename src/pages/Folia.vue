@@ -3,14 +3,14 @@
     <div class="background"></div>
     <div class="content" style>
       <v-ons-card>
-        <div class="title">Identifier une feuille</div>
+        <div class="title">{{ $t('identifyLeaf') }}</div>
         <div class="content">
-          <p>Prenez une photo de feuille puis réaliser un tracé à l'intérieur de la feuille</p>
+          <p>{{ $t('takePict') }}</p>
           <FileUpload @image="setImage"></FileUpload>
         </div>
       </v-ons-card>
       <v-ons-card v-if="foliaStarted">
-        <div class="title">Identification via Folia</div>
+        <div class="title">{{ $t('identificationViaFolia') }}</div>
         <div class="content">
           <div style="position:relative;">
             <p>
@@ -18,7 +18,7 @@
             </p>
           </div>
           <v-ons-list v-if="foliaResult.length">
-            <v-ons-list-header>Résultats</v-ons-list-header>
+            <v-ons-list-header>{{ $t('result') }}</v-ons-list-header>
             <v-ons-list-item v-for="(specieResult, index) in foliaResult" :key="index">
               <div class="left"></div>
               <div class="center">{{specieResult.species}} {{specieResult.percent}}%</div>
@@ -42,11 +42,11 @@
             style="position:absolute;top:0;left: 0;right: 0;margin: auto;"
           ></VueSignaturePad>
         </div>
-        <p>Réalisez un tracé à l'intérieur de la feuille puis valider</p>
+        <p>{{ $t('circleLeaf') }}</p>
         <v-ons-button
           style="position: absolute;left: 0;right: 0;bottom: 1px"
           @click="sendImages"
-        >Valider</v-ons-button>
+        >{{ $t('validate') }}</v-ons-button>
       </v-ons-modal>
     </div>
   </v-ons-page>

@@ -83,6 +83,18 @@ const i18n = new VueI18n({
   messages
 })
 
+function noBack(){
+  window.history.forward()
+} 
+noBack(); 
+window.onload=noBack; 
+window.onpageshow=function(evt){
+  if(evt.persisted) {
+    noBack()
+  } 
+} 
+window.onunload=function(){void(0)} 
+
 new Vue({
   el: '#app',
   i18n,

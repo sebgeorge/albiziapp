@@ -6,9 +6,8 @@
             </div>
         </v-ons-toolbar>
     	<v-ons-card>
-            <div class="title">Acquérir un status</div>
-            <div class="content">Les status sont acquis en progressant dans les points de connaissances et d'observation.
-                Vous trouvez ci dessous l'historique des status acquis.
+            <div class="title">{{ $t('acquireStatus') }}</div>
+            <div class="content">{{ $t('statusDescription') }}
             </div>
         </v-ons-card>
         <v-ons-list style="max-height:200px; overflow: auto">
