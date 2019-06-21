@@ -141,6 +141,7 @@ export default {
       releve: {},
       genusList: genusList,
       specieVerSource: speciesList,
+      commonList:commonList,
       placeholder: {
         specieName: this.$t('specieName'),
         genusName: this.$t('genusName'),
