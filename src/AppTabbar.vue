@@ -66,6 +66,9 @@ export default {
       }
     },
     userID() {
+      if(!this.userID)
+        return
+        
       Pusher.logToConsole = true;
 
       var pusher = new Pusher("f204a3eb6cfeb87e594b", {

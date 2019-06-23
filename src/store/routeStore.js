@@ -2,6 +2,7 @@ import {
   cpus
 } from "os";
 import { EventBus } from '../js/eventBus.js';
+import Vue from 'vue'
 var osmAuth = require("osm-auth");
 var removeTree = require('../js/osmRemoveTree')
 var addTree = require('../js/osmPost')
@@ -176,7 +177,7 @@ export default {
           if (index != -1) {
             // state.releves[index].test='truc'    
             state.releves.splice(index, 1, newReleve)
-            state.releves[index].prev = newReleve.prev
+            state.releves[index].prev.push(newReleve.prev[newReleve.prev.length -1])
           }
         },
         modifyFromOutside(state, newReleve) {
@@ -184,7 +185,7 @@ export default {
           if (index != -1) {
             // state.releves[index].test='truc'    
             state.releves.splice(index, 1, newReleve)
-            state.releves[index].prev = newReleve.prev
+            state.releves[index].prev.push(newReleve.prev[newReleve.prev.length -1])
           }
         },
 

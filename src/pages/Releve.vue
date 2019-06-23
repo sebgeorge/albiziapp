@@ -23,7 +23,7 @@
             v-show="releve.modifierName"
           >{{ $t('lastModif') }} : {{releve.modifierName}}</ons-list-item>
         </ons-list>
-        <img v-show="releve.image" :src="releve.image" style="width: 100%">
+        <img v-if="releve.hasImage" :src="'/api/image/'+ releve._id + '?' + new Date().getTime()" style="width: 100%">
 
         <section style="margin: 16px">
           <p class="center">
@@ -70,6 +70,7 @@
                     v-show="oldreleve.authorName"
                   >{{ $t('recordAuthor') }} : {{oldreleve.authorName}}</ons-list-item>
                   <ons-list-item v-show="oldreleve.specie">{{ $t('specie') }} : {{oldreleve.specie}}</ons-list-item>
+                  <ons-list-item v-show="oldreleve.genus">{{ $t('genus') }} : {{oldreleve.genus}}</ons-list-item>
                   <ons-list-item v-show="oldreleve.common">{{ $t('common') }} : {{oldreleve.common}}</ons-list-item>
 
                   <ons-list-item
@@ -78,8 +79,8 @@
                   <ons-list-item
                     v-show="oldreleve.modifierName"
                   >{{ $t('modificationBy') }} : {{oldreleve.modifierName}}</ons-list-item>
-                  <v-ons-list-item v-if="oldreleve.image">
-                    <img :src="oldreleve.image" style="width: 100%">
+                  <v-ons-list-item v-if="oldreleve.hasImage"> 
+                    <img :src="'/api/image/' + oldreleve._id + '/hist/' +index" style="width: 100%">
                   </v-ons-list-item>
                 </ons-list>
               </div>
