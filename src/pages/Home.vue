@@ -1,6 +1,5 @@
 <template>
   <v-ons-page> 
-
     <v-ons-card v-show="!$store.state.user.id">
       <div  class="title">{{ $t('authenticate')}}</div>
       <div class="content">
@@ -92,6 +91,9 @@ export default {
     };
   },
   mounted() {
+    console.log(process.env.NODE_ENV)
+    console.log(process.env.VUE_APP_MAP_SERVER)
+
     EventBus.$on('displayHelpMessage', param => {
       this.displayHelpMessage(param)
     });

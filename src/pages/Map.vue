@@ -234,7 +234,7 @@ export default {
       circleClicked: false,
       zoom: 19,
       center: L.latLng(48.08497, -0.75763),
-      url: "//wxs.ign.fr/1zk8fc4pfkpf90fgudlyn643/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&LAYER=ORTHOIMAGERY.ORTHOPHOTOS&format=image/jpeg&style=normal",
+      url: process.env.VUE_APP_MAP_SERVER,
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       withPopup: L.latLng(47.41322, -1.219482),
