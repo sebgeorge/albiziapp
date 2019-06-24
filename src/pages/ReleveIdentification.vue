@@ -80,10 +80,10 @@
           :customStrings=customStrings
         ></picture-input>
       </v-ons-list-item>
-      <v-ons-list-item v-if="releve.identificationValue.success && releve">
+      <v-ons-list-item v-show="releve.identificationValue.success">
         <img
-          v-show="releve.identificationValue.image"
-          :src="releve.identificationValue.image"
+          v-show="hasImage"
+          :src="releve.identificationValue.userImage"
           style="width: 100%"
         >
       </v-ons-list-item>
@@ -160,7 +160,7 @@ export default {
   },
   computed: {
     hasImage() {
-      if (this.releve.identificationValue.image) {
+      if (this.releve.identificationValue.userImage!=undefined) {
         return true;
       }
       return false
@@ -192,7 +192,7 @@ export default {
           function(compressedFile) {
             imageCompression.getDataUrlFromFile(compressedFile).then(
               function(compressedDataURI) {
-                this.$set(this.releve.identificationValue,'image', compressedDataURI);
+                this.$set(this.releve.identificationValue,'userImage', compressedDataURI);
               }.bind(this)
             );
             //return uploadToServer(compressedFile); // write your own logic
