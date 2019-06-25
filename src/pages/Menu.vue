@@ -14,6 +14,7 @@
         <div class="center">{{ item.title }}</div>
       </v-ons-list-item>
       <v-ons-list-item @click="logout">{{ $t('logout') }}</v-ons-list-item>
+      <v-ons-list-item @click="settings">Settings</v-ons-list-item>
       <v-ons-list-item @click="admin">Admin</v-ons-list-item>
       <v-ons-list-item>{{ $t('language') }} &nbsp;
         <select v-model="$i18n.locale">
@@ -28,6 +29,8 @@
 
 <script>
 import Admin from "./Admin.vue";
+import Settings from "./Settings.vue";
+
 export default {
   methods: {
     loadView(index) {
@@ -40,6 +43,20 @@ export default {
     logout() {
       this.$store.dispatch("user/logout");
          window.location.reload()
+    },
+    settings(){
+      this.$store.commit("navigator/push", {
+              extends: Settings,
+              data() {
+                return {
+                  toolbarInfo: {
+                    backLabel: "Home",
+                    title: "key"
+                  }
+                };
+              }
+            });
+
     },
     admin() {
       if(this.isAdmin){

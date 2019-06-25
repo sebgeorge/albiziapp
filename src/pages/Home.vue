@@ -159,6 +159,7 @@ export default {
     },
     'uid':{
       handler(){
+        this.$store.commit('user/setGamificationMode',this.backup.gamificationMode)
         if(this.backup && this.backup.mission){
           this.$store.commit('user/restoreBackup')
           if(this.backup.time && this.backup.time.duration>0){

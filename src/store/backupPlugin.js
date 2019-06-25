@@ -5,6 +5,10 @@ let restoreSession=(oldState,state)=>{
     delete oldState._id
     delete oldState.__v
     _.forOwn(oldState,(value,key)=>{
+        if(key=='gamificationMode'){
+            state.user[key]=value
+        }
+    
         if(value){
             if(!key.includes('_')){ //restoring state/user module
                 if(key=='actionsTransActivite'){
@@ -54,7 +58,7 @@ let backupPlugin = store => {
             case 'user/setActivityStatus' :
                 backup('activities',state.user.activities)
                 break
-            case 'user/gamificationMode':
+            case 'user/setGamificationMode':
                 backup('gamificationMode',state.user.gamificationMode)
                 break
             case 'user/updateProgression':

@@ -53,7 +53,7 @@
         <v-ons-list-item>
           <div class="center">{{ $t('gamificationMode') }}</div>
           <div class="right">
-            <v-ons-switch v-model="$store.state.user.gamificationMode"></v-ons-switch>
+            <v-ons-switch v-model="gamificationMode"></v-ons-switch>
           </div>
         </v-ons-list-item>
         <v-ons-list-item>
@@ -185,6 +185,15 @@ export default {
     scores() {
       return this.$store.state.user.scores;
     },
+    gamificationMode:{
+      get(){
+        return this.$store.state.user.gamificationMode
+      },
+      set(val){
+        this.$store.commit("user/setGamificationMode", val);
+
+      }
+    },
     identificationMode: {
       get() {
         return this.$store.state.commonData.identification;
@@ -277,11 +286,6 @@ export default {
     },
 
     loadUserData() {
-      axios.get("/api/verification").then(
-        function(response) {
-          this.verificationsByUser = this.formatResult(response.data);
-        }.bind(this)
-      );
       axios.get("/api/identification").then(
         function(response) {
           this.identificationByUser = this.formatResult(response.data);
