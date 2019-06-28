@@ -19,9 +19,15 @@ let loggerPlugin = store => {
             break
             case 'releve/add':
                  logEntry('newObservation',mutation.payload,activity)
+                 if(mutation.payload.hasImage){
+                     logEntry('newPhoto',mutation.payload,activity)
+                 }
             break    
             case 'releve/modify':
                 logEntry('modifyObservation',mutation.payload,activity)
+                if(mutation.payload.hasImage){
+                    logEntry('newPhoto',mutation.payload,activity)
+                }
                 break    
             case 'releve/validate':
                 logEntry('validateObservation',mutation.payload,activity)

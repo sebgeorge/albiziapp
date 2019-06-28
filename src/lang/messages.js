@@ -5,7 +5,7 @@ export default {
 
     validate: "Validate",
     back: "Back",
-    specie:"Specie",
+    specie:"Species",
     genus:"Genus",
     common:"Common",
 

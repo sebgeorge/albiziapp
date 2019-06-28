@@ -134,7 +134,7 @@ function extractActions(releve, operation) {
       if (releve.specie) actions.push("completeSpecie")
       if (releve.genus) actions.push("completeGenus")
       if (releve.common) actions.push("completeCommon")
-      if (releve.image) actions.push("photograph")
+      if (releve.hasImage) actions.push("photograph")
       break
     case "verify":
       var prev = releve.prev.splice(-1)[0]

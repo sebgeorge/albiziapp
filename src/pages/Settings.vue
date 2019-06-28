@@ -10,6 +10,13 @@
             <v-ons-switch v-model="gamificationMode"></v-ons-switch>
           </div>
         </v-ons-list-item>
+      <v-ons-list-item>
+          <div class="center">{{ $t('resetSession') }}</div>
+          <div class="right">
+            <v-ons-button @click="resetSession">Reset</v-ons-button>
+          </div>
+        </v-ons-list-item>
+
       </v-ons-list>
       <v-ons-list>
         <v-ons-list-title>{{ $t('usersConnected') }}</v-ons-list-title>
@@ -41,6 +48,18 @@ export default {
         this.$store.commit("user/setGamificationMode", val);
       }
     }
+  },
+  methods:{
+    resetSession() {
+      axios.post("/api/resetBackup").then(
+        function(response) {
+          if (response.data.success) {
+            window.location.reload();
+          }
+        }.bind(this)
+      );
+    },
+
   }
 };
 </script>
