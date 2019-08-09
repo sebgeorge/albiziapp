@@ -43,6 +43,14 @@ let DefaultIcon = L.icon({
     shadowUrl: iconShadow
 });
 L.Marker.prototype.options.icon = DefaultIcon;
+var foo = {foo: true}; // state object
+history.pushState(foo, "unused argument", "#newInitialUri");
+var bar = {bar: true}
+history.pushState(bar, "unused argument", "#newStateOfWebApp");
+window.onpopstate = function(event){
+    var baz = {baz: true}
+    history.pushState(baz, "unused argument", "#baseState");
+};
 
 Vue.config.devtools = true
 window.location.hash = "#de";
@@ -83,22 +91,25 @@ const i18n = new VueI18n({
   messages
 })
 
-function noBack(){
-  window.history.forward()
-} 
-noBack(); 
-window.onload=noBack; 
-window.onpageshow=function(evt){
-  if(evt.persisted) {
-    noBack()
-  } 
-} 
-window.onunload=function(){void(0)} 
 
 new Vue({
   el: '#app',
   i18n,
   render: h => h(AppNavigator),
+  created(){
+    this.$ons.ready(() => {
+
+      this.$ons.disableDeviceBackButtonHandler();
+    
+      document.addEventListener("backbutton", e => {
+        alert('de')
+        e.preventDefault();
+        e.stopPropagation();
+      }, false);
+    
+    });
+    
+  },
   store: new Vuex.Store({modules:storeLike.modules,  plugins: [scorePlugin,backupPlugin,loggerPlugin,statusPlugin]  }),
   beforeCreate() {
     // Shortcut for Material Design
