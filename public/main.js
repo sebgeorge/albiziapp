@@ -96,5 +96,9 @@ new Vue({
       document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
       document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
     }
+  },
+  mounted:function(){
+    console.log('dded')
+    this.$store.dispatch('floreData/getFlore')
   }
 });

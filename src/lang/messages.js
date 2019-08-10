@@ -14,7 +14,13 @@ export default {
     notVeryConfident:"Not very confident",
     confident: "Confident",
 
+
+    //Flore
+    commonGenus:'Common Genus',
     // APPTABBAR
+
+
+    
 
     map: "Map",
     mission: "Mission",
@@ -216,7 +222,10 @@ export default {
     unspecified:"Non renseignée",
     notVeryConfident:"Peu confiant",
     confident: "Confiant",
-    
+    //FLORE
+
+    commonGenus:'Genre vernac.',
+
     // APPTABBAR
 
     map: "Carte",

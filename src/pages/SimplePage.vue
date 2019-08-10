@@ -5,6 +5,7 @@
         <v-ons-back-button>Retour</v-ons-back-button>
       </div>
     </v-ons-toolbar>
+
     <v-ons-list>
       <v-ons-list-header class="head" v-if="!modify">{{ $t('newRecord') }}</v-ons-list-header>
       <v-ons-list-header class="head" v-if="modify">{{ $t('modifyRecord') }}</v-ons-list-header>
@@ -13,7 +14,16 @@
     font-size: 15px;
     font-weight: bolder;"
       >{{ $t('identification') }}</v-ons-list-title>
-
+      <v-ons-list-item>
+        <div class="center">
+          <v-ons-button
+            modifier="large"
+            @click="viewItem"
+            v-if="releve.species.length>0"
+            style="margin: 6px 0"
+          >Fiche espèce</v-ons-button>
+        </div>
+      </v-ons-list-item>
       <v-ons-list-item>
         <div class="left">
           <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>
@@ -21,13 +31,13 @@
         <div class="center">
           <label class="tag">{{ $t('specie') }}</label>
           <v-select
-          class="selector"
-            v-model="releve.specie"
+            class="selector"
+            v-model="releve"
             ref="species"
-            :reduce="option=>option.espece"
-            :options="specieVerSource"
-            label="espece"
-            :placeholder=placeholder.specieName
+            :options="speciesList"
+            label="species"
+            v-on:input="setTaxon"
+            :placeholder="placeholder.specieName"
             style="width: -webkit-fill-available;"
           ></v-select>
         </div>
@@ -37,15 +47,34 @@
           <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>
         </div>
         <div class="center">
+          <label class="tag">{{ $t('commonGenus') }}</label>
+          <v-select
+            class="selector"
+            v-model="releve.commonGenus"
+            ref="genus"
+            v-on:input="setGenus"
+            :disabled="releve.species.length>0"
+            :options="commonGenus"
+            :placeholder="placeholder.genusName"
+            style="width: -webkit-fill-available;"
+          ></v-select>
+        </div>
+      </v-ons-list-item>
+
+      <v-ons-list-item>
+        <div class="left">
+          <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>
+        </div>
+        <div class="center">
           <label class="tag">{{ $t('genus') }}</label>
           <v-select
             class="selector"
             v-model="releve.genus"
+            :disabled="releve.species.length>0"
             ref="genus"
+            v-on:input="setGenus"
             :options="genusList"
-            :reduce="option=>option.name"
-            label="name"
-            :placeholder=placeholder.genusName
+            :placeholder="placeholder.genusName"
             style="width: -webkit-fill-available;"
           ></v-select>
         </div>
@@ -57,12 +86,12 @@
         <label class="tag">{{ $t('common') }}</label>
         <v-select
           class="selector"
-          v-model="releve.common"
-          label="vernaculaire"
+          v-model="releve"
+          v-on:input="setTaxon"
+          label="common"
           ref="common"
-          :reduce="option=>option.vernaculaire"
           style="width: -webkit-fill-available;"
-          :placeholder=placeholder.commonName
+          :placeholder="placeholder.commonName"
           :options="commonList"
         ></v-select>
       </v-ons-list-item>
@@ -84,7 +113,8 @@
 
       <v-ons-list-item v-if="validate">
         <div class="left">
-          <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>{{ $t('noTree') }}
+          <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>
+          {{ $t('noTree') }}
         </div>
         <div class="center" style="margin-left:15px;">
           <v-ons-switch @change="releve.noTree=noTree" v-model="noTree"></v-ons-switch>
@@ -105,12 +135,16 @@
           capture="camera"
           size="10"
           buttonClass="btn"
-          :customStrings=customStrings
+          :customStrings="customStrings"
         ></picture-input>
       </v-ons-list-item>
     </v-ons-list>
     <section style="margin: 16px">
-      <v-ons-button v-if="!modify && osmUpdates" @click="uploadToOSM" style="margin: 6px">{{ $t('sendOSM') }}</v-ons-button>
+      <v-ons-button
+        v-if="!modify && osmUpdates"
+        @click="uploadToOSM"
+        style="margin: 6px"
+      >{{ $t('sendOSM') }}</v-ons-button>
       <v-ons-button @click="complete" style="margin: 6px">{{ $t('save') }}</v-ons-button>
       <v-ons-button modifier="outline" @click="cancel" style="margin: 6px">{{ $t('cancel') }}</v-ons-button>
     </section>
@@ -121,18 +155,18 @@
   position: relative !important;
 }
 .vs__dropdown-menu {
-  z-index: 10005!important;
+  z-index: 10005 !important;
 }
-.selector{
-  width: 70%!important;
-  margin-left:auto;
+.selector {
+  width: 70% !important;
+  margin-left: auto;
 }
-.tag{
+.tag {
   padding-top: 9px;
   font-weight: bold;
 }
-.head{
- font-size:36px;
+.head {
+  font-size: 36px;
 }
 </style>
 <script>
@@ -141,38 +175,47 @@
 import PictureInput from "vue-picture-input";
 import Identification from "./Identification.vue";
 import imageCompression from "browser-image-compression";
-import uploadObservationToOSM from "../js/osmPost"
-import osmUpdate from "../js/osmUpdate"
-import genusList from "../js/genus.js";
-import speciesList from "../js/species_ver_old.js"
-import commonList from "../js/species_ver.js";
+import uploadObservationToOSM from "../js/osmPost";
+import osmUpdate from "../js/osmUpdate";
+import FloreItem from "./FloreItem.vue";
 
 export default {
+  watch:{
+    _id(newId,old){
+      console.log(old)
+      if(old){
+        this.releve._id=old
+      }
+    }
+  },
   data() {
     return {
       releve: {
+        species: "",
+        genus: "",
+        commonGenus: "",
+        _id:"",
+        common: "",
+        telaBotanicaTaxon: "",
         confidence: "Non renseignée" //this.$t('unspecified')
       },
-      specie: "",
+      species: null,
       noTree: false,
       selectedHeight: 0,
       selectedConfidence: "Non renseignée", //this.$t('unspecified')
       selectedCrown: 0,
-      commonList:commonList,
-      specieVerSource: speciesList,
-      genusList: genusList,
       modify: false,
       validate: false,
       placeholder: {
-        specieName: this.$t('specieName'),
-        genusName: this.$t('genusName'),
-        commonName: this.$t('commonName')
+        specieName: this.$t("specieName"),
+        genusName: this.$t("genusName"),
+        commonName: this.$t("commonName")
       },
-      customStrings:{ 
-        drag: 'Prendre photo',
-        change: this.$t('change'),
-        remove: this.$t('remove'),
-        tap: this.$t('tap')
+      customStrings: {
+        drag: "Prendre photo",
+        change: this.$t("change"),
+        remove: this.$t("remove"),
+        tap: this.$t("tap")
       }
     };
   },
@@ -180,8 +223,55 @@ export default {
     PictureInput
   },
   computed: {
-    osmUpdates(){
-      return this.$store.state.commonData.osmUpdate
+    _id(){
+      return this.releve._id
+    },
+    osmUpdates() {
+      return this.$store.state.commonData.osmUpdate;
+    },
+    treeList() {
+      return this.$store.state.floreData.treeList;
+    },
+    speciesList() {
+      return [
+        ...new Set(
+          this.treeList
+            .map(v => {
+              return {
+                commonGenus: v.commonGenus,
+                common: v.common,
+                genus: v.genus,
+                species: v.species,
+                telaBotanicaTaxon: v.telaBotanicaTaxon
+              };
+            })
+            .sort()
+        )
+      ];
+    },
+    commonList() {
+      return [
+        ...new Set(
+          this.treeList
+            .map(v => {
+              return {
+                commonGenus: v.commonGenus,
+                common: v.common,
+                genus: v.genus,
+                species: v.species,
+                telaBotanicaTaxon: v.telaBotanicaTaxon
+              };
+            })
+            .sort()
+        )
+      ];
+    },
+
+    genusList() {
+      return [...new Set(this.treeList.map(v => v.genus).sort())];
+    },
+    commonGenus() {
+      return [...new Set(this.treeList.map(v => v.common_genus))];
     },
 
     confidenceValues() {
@@ -203,9 +293,65 @@ export default {
     }
   },
   methods: {
-    uploadToOSM(){
-      this.releve.location={coordinates:this.coordinates}
-      uploadObservationToOSM(this.releve)
+    viewItem() {
+      this.$store.commit("navigator/push", {
+        extends: FloreItem,
+        data: function() {
+          return {
+            telaBotanicaTaxon: this.releve.telaBotanicaTaxon,
+            toolbarInfo: {
+              backLabel: "Home",
+              title: "key"
+            }
+          };
+        }.bind(this)
+      });
+    },
+
+    setTaxon(e) {
+      if (!e) {
+        this.releve = {
+          species: "",
+          genus: "",
+          commonGenus: "",
+          common: "",
+          telaBotanicaTaxon: "",
+          confidence: "Non renseignée" //this.$t('unspecified')
+        };
+        //this.releve.common=''
+        return;
+      }
+      let tree = this.treeList.filter(v => v.telaBotanicaTaxon == e.telaBotanicaTaxon)[0];
+      this.releve = {
+        confidence: "Non renseignée",
+        commonGenus: tree.common_genus,
+        genus: tree.genus,
+        species: tree.species,
+        common: tree.common,
+        telaBotanicaTaxon: tree.telaBotanicaTaxon
+      };
+    },
+    setGenus(e) {
+      if (!e) {
+        this.releve = {
+          species: "",
+          genus: "",
+          commonGenus: "",
+          common: "",
+          telaBotanicaTaxon: "",
+          confidence: "Non renseignée" //this.$t('unspecified')
+        };
+        return;
+      }
+      let tree = this.treeList.filter(
+        v => v.genus == e || v.common_genus == e
+      )[0];
+      this.releve.genus = tree.genus;
+      this.releve.commonGenus = tree.common_genus;
+    },
+    uploadToOSM() {
+      this.releve.location = { coordinates: this.coordinates };
+      uploadObservationToOSM(this.releve);
       this.$store.commit("navigator/pop");
     },
 
@@ -222,7 +368,10 @@ export default {
 
       var maxSizeMB = 1;
       var maxWidthOrHeight = 600; // compressedFile will scale down by ratio to a point that width or height is smaller than maxWidthOrHeight
-      imageCompression(imageFile, {maxSizeMB:maxSizeMB, maxWidthOrHeight:maxWidthOrHeight}) // maxSizeMB, maxWidthOrHeight are optional
+      imageCompression(imageFile, {
+        maxSizeMB: maxSizeMB,
+        maxWidthOrHeight: maxWidthOrHeight
+      }) // maxSizeMB, maxWidthOrHeight are optional
         .then(
           function(compressedFile) {
             console.log(
@@ -235,7 +384,7 @@ export default {
             imageCompression.getDataUrlFromFile(compressedFile).then(
               function(compressedDataURI) {
                 this.releve.image = compressedDataURI;
-                console.log(this.releve)
+                console.log(this.releve);
               }.bind(this)
             );
             //return uploadToServer(compressedFile); // write your own logic

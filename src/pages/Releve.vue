@@ -8,13 +8,24 @@
         <ons-list>
           <ons-list-header>{{ $t('information') }}</ons-list-header>
           <ons-list-item v-show="releve.authorName">{{ $t('recordAuthor') }} : {{releve.authorName}}</ons-list-item>
-          <ons-list-item v-show="releve.specie">{{ $t('specie') }} : {{releve.specie}}</ons-list-item>
+          <ons-list-item v-show="releve.species">{{ $t('specie') }} : {{releve.species}}</ons-list-item>
           <ons-list-item v-show="releve.genus">{{ $t('genus') }} : {{releve.genus}}</ons-list-item>
+          <ons-list-item v-show="releve.commonGenus">Genre vernac. : {{releve.commonGenus}}</ons-list-item>         
           <ons-list-item v-show="releve.common">{{ $t('common') }} : {{releve.common}}</ons-list-item>
           <ons-list-item v-show="releve.height">{{ $t('heigth') }} : {{releve.height}}</ons-list-item>
           <ons-list-item v-show="releve.crown">{{ $t('crownDiameter') }} : {{releve.crown}}</ons-list-item>
           <ons-list-item v-show="releve.confidence">{{ $t('confidenceDegree') }} : {{releve.confidence}}</ons-list-item>
           <ons-list-item v-show="releve.noTree.length>0">{{ $t('usersReporting') }} : {{releve.noTree.length}}</ons-list-item>
+      <v-ons-list-item>
+        <div class="center">
+          <v-ons-button
+            modifier="large"
+            @click="viewItem"
+            v-if="releve.telaBotanicaTaxon.length>0"
+            style="margin: 6px 0"
+          >Fiche espèce</v-ons-button>
+        </div>
+      </v-ons-list-item>
 
           <ons-list-item
             v-show="releve.validation.length-1"
@@ -101,6 +112,7 @@
 import SimplePage from "./SimplePage.vue";
 import uploadObservationToOSM from "../js/osmPost"
 import osmUpdate from "../js/osmUpdate"
+import FloreItem from "./FloreItem.vue";
 
 // TODO cacher supprimer relevé si l'utilisateur ne peut pas le supprimer
 export default {
@@ -119,6 +131,7 @@ export default {
     releve() {
       return this.$store.state.releve.releves.find(rel => rel._id == this.id);
     },
+
     isGod(){
       return this.$store.state.user.isGod
     },
@@ -166,6 +179,21 @@ export default {
     }
   },
   methods: {
+        viewItem() {
+      this.$store.commit("navigator/push", {
+        extends: FloreItem,
+        data: function() {
+          return {
+            telaBotanicaTaxon: this.releve.telaBotanicaTaxon,
+            toolbarInfo: {
+              backLabel: "Home",
+              title: "key"
+            }
+          };
+        }.bind(this)
+      });
+    },
+
     uploadToOSM(){
       uploadObservationToOSM(this.releve)
       this.$store.commit("navigator/pop");

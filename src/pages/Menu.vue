@@ -14,6 +14,7 @@
         <div class="center">{{ item.title }}</div>
       </v-ons-list-item>
       <v-ons-list-item @click="logout">{{ $t('logout') }}</v-ons-list-item>
+      <v-ons-list-item @click="flore">Flore</v-ons-list-item>     
       <v-ons-list-item @click="settings">Settings</v-ons-list-item>
       <v-ons-list-item @click="admin">Admin</v-ons-list-item>
       <v-ons-list-item>{{ $t('language') }} &nbsp;
@@ -30,7 +31,7 @@
 <script>
 import Admin from "./Admin.vue";
 import Settings from "./Settings.vue";
-
+import Flore from "./Flore.vue"
 export default {
   methods: {
     loadView(index) {
@@ -58,6 +59,21 @@ export default {
             });
 
     },
+    flore(){
+      this.$store.commit("navigator/push", {
+              extends: Flore,
+              data() {
+                return {
+                  toolbarInfo: {
+                    backLabel: "Home",
+                    title: "key"
+                  }
+                };
+              }
+            });
+
+    },
+
     admin() {
       if(this.isAdmin){
       this.$store.commit("navigator/push", {

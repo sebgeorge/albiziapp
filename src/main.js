@@ -97,6 +97,8 @@ new Vue({
   i18n,
   render: h => h(AppNavigator),
   created(){
+    this.$store.dispatch('floreData/getFlore')
+
     this.$ons.ready(() => {
 
       this.$ons.disableDeviceBackButtonHandler();
