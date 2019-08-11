@@ -1,30 +1,12 @@
-# osm-webpack
+# Albiziapp
+A gamified mobile web app for mapping trees that integrates with OpenStreetMap.
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Instance for French users [Albiziapp](https://albiziapp.reveries-project.fr/).
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Run your tests
-```
-npm run test
-```
+International instance [Albiziapp](https://pre-prod.albiziapp.reveries-project.fr/)
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-# albiziapp
+Project information [Info](https://info.albiziapp.reveries-project.fr)
+
