@@ -20,7 +20,7 @@
         <v-ons-list-item>
           <div class="center">{{ $t('allowOSMModif') }}</div>
           <div class="right">
-            <v-ons-switch @change="osmUpdates"></v-ons-switch>
+            <v-ons-switch v-model="osmUpdates"></v-ons-switch>
           </div>
         </v-ons-list-item>
 

@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     osmUpdates(){
-      return this.$store.state.commonData.osmUpdate
+      return this.$store.state.commonData.osmUpdates
     },
 
   },

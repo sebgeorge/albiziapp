@@ -126,7 +126,7 @@ export default {
   },
   computed: {
     osmUpdates(){
-      return this.$store.state.commonData.osmUpdate
+      return this.$store.state.commonData.osmUpdates
     },
     releve() {
       return this.$store.state.releve.releves.find(rel => rel._id == this.id);

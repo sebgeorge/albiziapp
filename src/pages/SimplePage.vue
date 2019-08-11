@@ -227,7 +227,7 @@ export default {
       return this.releve._id
     },
     osmUpdates() {
-      return this.$store.state.commonData.osmUpdate;
+      return this.$store.state.commonData.osmUpdates;
     },
     treeList() {
       return this.$store.state.floreData.treeList;
