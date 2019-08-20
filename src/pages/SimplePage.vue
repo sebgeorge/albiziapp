@@ -19,7 +19,7 @@
           <v-ons-button
             modifier="large"
             @click="viewItem"
-            v-if="releve.species.length>0"
+            v-if="releve.specie.length>0"
             style="margin: 6px 0"
           >Fiche espèce</v-ons-button>
         </div>
@@ -35,7 +35,7 @@
             v-model="releve"
             ref="species"
             :options="speciesList"
-            label="species"
+            label="specie"
             v-on:input="setTaxon"
             :placeholder="placeholder.specieName"
             style="width: -webkit-fill-available;"
@@ -53,7 +53,7 @@
             v-model="releve.commonGenus"
             ref="genus"
             v-on:input="setGenus"
-            :disabled="releve.species.length>0"
+            :disabled="releve.specie.length>0"
             :options="commonGenus"
             :placeholder="placeholder.genusName"
             style="width: -webkit-fill-available;"
@@ -70,7 +70,7 @@
           <v-select
             class="selector"
             v-model="releve.genus"
-            :disabled="releve.species.length>0"
+            :disabled="releve.specie.length>0"
             ref="genus"
             v-on:input="setGenus"
             :options="genusList"
@@ -88,6 +88,7 @@
           class="selector"
           v-model="releve"
           v-on:input="setTaxon"
+          :filterBy="filterBy"
           label="common"
           ref="common"
           style="width: -webkit-fill-available;"
@@ -191,7 +192,7 @@ export default {
   data() {
     return {
       releve: {
-        species: "",
+        specie: "",
         genus: "",
         commonGenus: "",
         _id:"",
@@ -199,8 +200,8 @@ export default {
         telaBotanicaTaxon: "",
         confidence: "Non renseignée" //this.$t('unspecified')
       },
-      species: null,
       noTree: false,
+      image:null,
       selectedHeight: 0,
       selectedConfidence: "Non renseignée", //this.$t('unspecified')
       selectedCrown: 0,
@@ -238,10 +239,10 @@ export default {
           this.treeList
             .map(v => {
               return {
-                commonGenus: v.commonGenus,
+                commonGenus: v.common_genus,
                 common: v.common,
                 genus: v.genus,
-                species: v.species,
+                specie: v.species,
                 telaBotanicaTaxon: v.telaBotanicaTaxon
               };
             })
@@ -255,14 +256,16 @@ export default {
           this.treeList
             .map(v => {
               return {
-                commonGenus: v.commonGenus,
+                commonGenus: v.common_genus,
                 common: v.common,
                 genus: v.genus,
-                species: v.species,
+                specie: v.species,
                 telaBotanicaTaxon: v.telaBotanicaTaxon
               };
             })
-            .sort()
+            .sort(function(a,b){
+              return a.common.toString().localeCompare(b.common.toString())
+              })
         )
       ];
     },
@@ -271,7 +274,11 @@ export default {
       return [...new Set(this.treeList.map(v => v.genus).sort())];
     },
     commonGenus() {
-      return [...new Set(this.treeList.map(v => v.common_genus))];
+      return [...new Set(this.treeList.map(v => v.common_genus))].sort(
+        function(a,b)
+        {
+          return a.toString().localeCompare(b.toString())
+        });
     },
 
     confidenceValues() {
@@ -307,11 +314,21 @@ export default {
         }.bind(this)
       });
     },
+	  filterBy(option, label, search) {
+      let x=this.normalize(label) || ""
+		  return x.indexOf(this.normalize(search)) > -1;
+	  },
+    normalize(string) {
+      return string
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    },
 
     setTaxon(e) {
       if (!e) {
         this.releve = {
-          species: "",
+          specie: "",
           genus: "",
           commonGenus: "",
           common: "",
@@ -326,7 +343,7 @@ export default {
         confidence: "Non renseignée",
         commonGenus: tree.common_genus,
         genus: tree.genus,
-        species: tree.species,
+        specie: tree.species,
         common: tree.common,
         telaBotanicaTaxon: tree.telaBotanicaTaxon
       };
@@ -334,7 +351,7 @@ export default {
     setGenus(e) {
       if (!e) {
         this.releve = {
-          species: "",
+          specie: "",
           genus: "",
           commonGenus: "",
           common: "",
@@ -383,8 +400,7 @@ export default {
             ); // smaller than maxSizeMB
             imageCompression.getDataUrlFromFile(compressedFile).then(
               function(compressedDataURI) {
-                this.releve.image = compressedDataURI;
-                console.log(this.releve);
+                this.image = compressedDataURI;
               }.bind(this)
             );
             //return uploadToServer(compressedFile); // write your own logic
@@ -396,6 +412,7 @@ export default {
     },
     complete() {
       let releve = this.releve;
+      this.releve.image=this.image
       if (!this.modify) {
         this.releve.coordinates = this.coordinates;
         this.$store.dispatch("releve/setObservation", releve);

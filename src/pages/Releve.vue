@@ -8,7 +8,7 @@
         <ons-list>
           <ons-list-header>{{ $t('information') }}</ons-list-header>
           <ons-list-item v-show="releve.authorName">{{ $t('recordAuthor') }} : {{releve.authorName}}</ons-list-item>
-          <ons-list-item v-show="releve.species">{{ $t('specie') }} : {{releve.species}}</ons-list-item>
+          <ons-list-item v-show="releve.specie">{{ $t('specie') }} : {{releve.specie}}</ons-list-item>
           <ons-list-item v-show="releve.genus">{{ $t('genus') }} : {{releve.genus}}</ons-list-item>
           <ons-list-item v-show="releve.commonGenus">Genre vernac. : {{releve.commonGenus}}</ons-list-item>         
           <ons-list-item v-show="releve.common">{{ $t('common') }} : {{releve.common}}</ons-list-item>

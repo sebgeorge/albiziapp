@@ -26,6 +26,10 @@ import vSelect from 'vue-select'
 // import VueOnsen from 'vue-onsenui/esm'; // For ESM
 // import * as OnsenComponents from './onsen-components'; // For ESM
 import storeLike from './store/routeStore';
+import floreData from './store/modules/floreData';
+import commonData from './store/modules/commonData';
+storeLike.modules.floreData=floreData
+storeLike.modules.commonData=commonData
 import CustomToolbar from './partials/CustomToolbar.vue';
 import AppNavigator from './AppNavigator.vue';
 import 'vue-select/dist/vue-select.css';

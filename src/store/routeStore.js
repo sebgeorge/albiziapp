@@ -9,60 +9,6 @@ var addTree = require('../js/osmPost')
 
 export default {
   modules: {
-    floreData:{
-      strict: true,
-      namespaced: true,
-      state :{
-        treeList:[]
-      },
-      mutations:{
-        setFlore(state,treeList){
-          state.treeList=treeList
-        }
-      },
-      actions:{
-        getFlore({commit}){
-          axios.get('/api/listTrees')
-          .then((response)=>{
-            commit('setFlore',response.data)
-          })
-        }
-      }
-    },
-    commonData: {
-      strict: true,
-      namespaced: true,
-      state: {
-        identification: false,
-        verification: false,
-        osmUpdates:false,
-        showOSM:false,
-        confidenceValues: [
-          'Non renseignée',
-          'Peu confiant',
-          'Confiant'
-
-          /*'unspecified',
-          'notVeryConfident',
-          'confident'*/
-        ]
-      },
-      mutations: {
-        setVerificationMode(state, mode) {
-          state.verification = mode
-        },
-        showOSM(state,mode){
-          state.showOSM=mode
-        },
-        setOsmUpdates(state, mode) {
-          state.osmUpdates = mode
-        },
-
-        setIdentificationMode(state, mode) {
-          state.identification = mode
-        }
-      }
-    },
     osmData: {
       strict: true,
       namespaced: true,
