@@ -57,7 +57,6 @@ window.onpopstate = function(event){
 };
 
 Vue.config.devtools = true
-window.location.hash = "#de";
 Vue.use(Toasted, {
     iconPack : 'fontawesome' // set your iconPack, defaults to material. material|fontawesome|custom-class
 });
@@ -67,12 +66,6 @@ Vue.use(VueOnsen);
 Vue.use(BootstrapVue)
 Vue.use(VFileUpload)
 Vue.use(require('vue-moment'));
-window.addEventListener("hashchange", function(){
-  console.log("Hash changed to", window.location.hash);
-    window.location.hash = "#albiziapp"
-  
-  // .... Do your thing here...
-});
 // Register components globally
 // Object.values(OnsenComponents).forEach(component => Vue.component(component.name, component)); // For ESM
 Vue.component('custom-toolbar', CustomToolbar); // Common toolbar
@@ -102,6 +95,7 @@ new Vue({
   render: h => h(AppNavigator),
   created(){
     this.$store.dispatch('floreData/getFlore')
+    this.$store.dispatch('floreData/getFloreProperties')
 
     this.$ons.ready(() => {
 

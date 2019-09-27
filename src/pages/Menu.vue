@@ -15,6 +15,7 @@
       </v-ons-list-item>
       <v-ons-list-item @click="logout">{{ $t('logout') }}</v-ons-list-item>
       <v-ons-list-item @click="flore">Flore</v-ons-list-item>     
+      <v-ons-list-item @click="key">Clef</v-ons-list-item>     
       <v-ons-list-item @click="settings">Settings</v-ons-list-item>
       <v-ons-list-item @click="admin">Admin</v-ons-list-item>
       <v-ons-list-item>{{ $t('language') }} &nbsp;
@@ -32,8 +33,10 @@
 import Admin from "./Admin.vue";
 import Settings from "./Settings.vue";
 import Flore from "./Flore.vue"
+import Key from "./Key.vue"
 export default {
   methods: {
+
     loadView(index) {
       this.$store.commit("tabbar/set", index + 1);
       this.$store.commit("splitter/toggle");
@@ -59,6 +62,21 @@ export default {
             });
 
     },
+    key(){
+      this.$store.commit("navigator/push", {
+              extends: Key,
+              data() {
+                return {
+                  toolbarInfo: {
+                    backLabel: "Home",
+                    title: "key"
+                  }
+                };
+              }
+            });
+
+    },
+
     flore(){
       this.$store.commit("navigator/push", {
               extends: Flore,
