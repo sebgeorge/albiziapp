@@ -12,7 +12,7 @@ let loggerPlugin = store => {
         }
         switch(mutation.type){
             case 'tabbar/set' :
-                logEntry('changePage' + mutation.payload,activity)
+                logEntry('changePage' , mutation.payload,activity)
                 break
             case 'user/addPoints' :
                 logEntry('updateScore',state.user.scores,activity)
