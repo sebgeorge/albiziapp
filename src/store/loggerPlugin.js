@@ -11,6 +11,9 @@ let loggerPlugin = store => {
             activity={index:state.user.indexActivite,name:state.user.activite.instruction.long}
         }
         switch(mutation.type){
+            case 'tabbar/set' :
+                logEntry('changePage' + mutation.payload,activity)
+                break
             case 'user/addPoints' :
                 logEntry('updateScore',state.user.scores,activity)
                 break
