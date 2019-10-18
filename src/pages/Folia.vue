@@ -14,7 +14,6 @@
         <div class="content">
           <div style="position:relative;">
             <p>
-              {{currentStep}}
               <v-ons-progress-bar :value="currentStep" secondary-value="100"></v-ons-progress-bar>
             </p>
           </div>
