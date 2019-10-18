@@ -24,30 +24,13 @@
           >Fiche espèce</v-ons-button>
         </div>
       </v-ons-list-item>
+               
+        <v-ons-list-title> <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>Genre</v-ons-list-title>
       <v-ons-list-item>
         <div class="left">
-          <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>
+          <label class="tag">Commun</label>
         </div>
         <div class="center">
-          <label class="tag">{{ $t('specie') }}</label>
-          <v-select
-            class="selector"
-            v-model="releve"
-            ref="species"
-            :options="speciesList"
-            label="specie"
-            v-on:input="setTaxon"
-            :placeholder="placeholder.specieName"
-            style="width: -webkit-fill-available;"
-          ></v-select>
-        </div>
-      </v-ons-list-item>
-      <v-ons-list-item>
-        <div class="left">
-          <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>
-        </div>
-        <div class="center">
-          <label class="tag">{{ $t('commonGenus') }}</label>
           <v-select
             class="selector"
             v-model="releve.commonGenus"
@@ -55,18 +38,18 @@
             v-on:input="setGenus"
             :disabled="releve.specie.length>0"
             :options="commonGenus"
-            :placeholder="placeholder.genusName"
+            placeholder="Genre commun"
             style="width: -webkit-fill-available;"
           ></v-select>
         </div>
       </v-ons-list-item>
 
-      <v-ons-list-item>
-        <div class="left">
-          <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>
+
+        <v-ons-list-item style="margin-left:20px;">
+        <div class="left" style="margin-left:20px;" >
+          <label  class="tag">Latin </label>
         </div>
         <div class="center">
-          <label class="tag">{{ $t('genus') }}</label>
           <v-select
             class="selector"
             v-model="releve.genus"
@@ -74,16 +57,19 @@
             ref="genus"
             v-on:input="setGenus"
             :options="genusList"
-            :placeholder="placeholder.genusName"
+            placeholder="Genre latin"
             style="width: -webkit-fill-available;"
           ></v-select>
         </div>
       </v-ons-list-item>
+
+        <v-ons-list-title><v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon> Espèce</v-ons-list-title>
+
+
       <v-ons-list-item>
         <div class="left">
-          <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>
+        <label class="tag"><i>Commune</i></label>
         </div>
-        <label class="tag">{{ $t('common') }}</label>
         <v-select
           class="selector"
           v-model="releve"
@@ -92,16 +78,36 @@
           label="common"
           ref="common"
           style="width: -webkit-fill-available;"
-          :placeholder="placeholder.commonName"
+          placeholder="Nom commun"
           :options="commonList"
         ></v-select>
       </v-ons-list-item>
-      <v-ons-list-item>
-        <div class="left">
-          <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>
+
+
+      <v-ons-list-item style="margin-left:20px;">
+        <div class="left" style="margin-left:20px;">
+          <label class="tag"><i>Latine</i></label>
         </div>
         <div class="center">
+          <v-select
+            class="selector"
+            v-model="releve"
+            ref="species"
+            :options="speciesList"
+            label="specie"
+            v-on:input="setTaxon"
+            placeholder="Nom latin"
+            style="width: -webkit-fill-available;"
+          ></v-select>
+        </div>
+      </v-ons-list-item>
+      <v-ons-list-title> <v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>Degré de confiance</v-ons-list-title>
+
+      <v-ons-list-item>
+        <div class="left">
           <label class="tag">{{ $t('confidence') }}</label>
+        </div>
+        <div class="center">
           <v-ons-select :disabled="noTree" class="selector" v-model="releve.confidence">
             <option
               v-for="(confidence,index) in confidenceValues"
@@ -121,6 +127,7 @@
           <v-ons-switch @change="releve.noTree=noTree" v-model="noTree"></v-ons-switch>
         </div>
       </v-ons-list-item>
+      <v-ons-list-title><v-ons-icon icon="ion-leaf" class="list-item__icon"></v-ons-icon>Photographie</v-ons-list-title>
 
       <v-ons-list-item>
         <picture-input

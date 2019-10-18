@@ -14,7 +14,8 @@
         <div class="content">
           <div style="position:relative;">
             <p>
-              <v-ons-progress-bar :value="currentStep"></v-ons-progress-bar>
+              {{currentStep}}
+              <v-ons-progress-bar :value="currentStep" secondary-value="100"></v-ons-progress-bar>
             </p>
           </div>
           <v-ons-list v-if="foliaResult.length">
@@ -174,11 +175,9 @@ export default {
             payload: JSON.stringify({ trace: dataURI, leaf: imageData })
           });
           source.addEventListener("readystatechange", function(e) {
-            console.log(e);
-          });
-          source.addEventListener("error", function(e) {
-            this.handleError();
-            source.close();
+            if(e.readyState==2 && this.foliaResult.length==0){
+             // this.handleError()
+            }
           }.bind(this));
 
           source.addEventListener(
