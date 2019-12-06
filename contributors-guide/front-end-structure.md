@@ -92,6 +92,24 @@ Change labels or icon in tabs\(\) declaration.
 Remove an element of the tabs array, what happens?
 {% endhint %}
 
+Time to use Vue Dev Tools. In your beloved Chrome \(on Albiziapp tab\) Ctrl-Maj-J will launch Chrome dev tools. 
+
+From there access Vue Dev Tools. 
+
+{% hint style="info" %}
+The first tab of Vue Dev Tools is for watching component
+{% endhint %}
+
+ 
+
+{% hint style="info" %}
+Use filter option to quickly access a given component
+{% endhint %}
+
+Here
+
+![](../.gitbook/assets/image%20%285%29.png)
+
 #### The navigator component
 
 The navigator component is in charge of the stack of sub-pages. Whenever the user enter a subpage \(ex. consult a record\), or a sub-sub-page \(ex. modify a record\) ; the navigator updates the stack pages accordingly.
