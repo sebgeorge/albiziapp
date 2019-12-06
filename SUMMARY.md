@@ -10,6 +10,8 @@
 * [Recommendations](contributors-guide/untitled.md)
 * [Getting started](contributors-guide/getting-started.md)
 * [Top level : Navigation components](contributors-guide/front-end-structure.md)
+* [Pages and component](contributors-guide/pages-and-component.md)
+* [Adding/changing a page](contributors-guide/adding-changing-a-page.md)
 
 ## Administrators guide
 
