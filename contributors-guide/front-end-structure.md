@@ -114,4 +114,8 @@ Let's consider this piece of code. We notice 2 main property associated to v-ons
 
 * page-stack : **preceded by a comma,** its value is **bound** to the current state of the stack \(an array\)
 * pop-page : **preceded by a comma,** its value is **bound** to a function \(storePop\), this function simply remove the last element of the stack
-* 
+
+
+
+
+

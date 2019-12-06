@@ -35,7 +35,7 @@ $ vue-ui
 $ git clone https://github.com/gick/albiziapp.git
 $ cd albiziapp
 $ npm install
-$ npm run dev
+$ npm run serve
 ```
 
 If all goes well you should be directed to a page like this :
@@ -53,4 +53,12 @@ $ git clone https://github.com/REVERIES-project/reveries-osm-data.git
 $ cd reveries-osm-data
 $ npm install
 ```
+
+### Get Vue DevTools
+
+Vue DevTools is an extension for Chromium/Chrome. **It is very very very useful**. If you don't like Chromium, code your own browser that accepts Vue DevTools
+
+[https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
+
+ 
 
