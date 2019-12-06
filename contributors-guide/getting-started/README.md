@@ -40,7 +40,7 @@ $ npm run serve
 
 If all goes well you should be directed to a page like this :
 
-![](../.gitbook/assets/image%20%289%29.png)
+![](../../.gitbook/assets/image%20%289%29.png)
 
 
 
