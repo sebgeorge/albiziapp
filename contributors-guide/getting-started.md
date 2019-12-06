@@ -1,6 +1,6 @@
 # Getting started
 
-## Setup your dev environment
+### Setup your dev environment
 
 * Install node \([https://nodejs.org/en/download/](https://nodejs.org/en/download/)\)
 * Install vue/@cli
