@@ -3,10 +3,11 @@
 ### Setup your dev environment
 
 * Install node \([https://nodejs.org/en/download/](https://nodejs.org/en/download/)\)
-* Install vue/@cli
+* Install vue/@cli and pm2
 
 ```
 $ npm i -g vue/@cli
+$ npm i -g pm2
 ```
 
 {% hint style="info" %}
@@ -42,4 +43,14 @@ If all goes well you should be directed to a page like this :
 ![](../.gitbook/assets/image%20%286%29.png)
 
 
+
+
+
+### Get the last version of Albiziapp back-end
+
+```bash
+$ git clone https://github.com/REVERIES-project/reveries-osm-data.git
+$ cd reveries-osm-data
+$ npm install
+```
 
