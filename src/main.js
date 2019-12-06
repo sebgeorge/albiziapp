@@ -18,8 +18,8 @@ import BootstrapVue from 'bootstrap-vue' // For progressBar
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import BProgress from 'bootstrap-vue/es/components/progress/progress'
-import BProgressBar from 'bootstrap-vue/es/components/progress/progress-bar'
+import BProgress from 'bootstrap-vue'
+import BProgressBar from 'bootstrap-vue'
 import vSelect from 'vue-select'
 
 
