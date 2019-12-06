@@ -9,7 +9,7 @@
 
 * [Recommendations](contributors-guide/untitled.md)
 * [Getting started](contributors-guide/getting-started.md)
-* [Front-end structure](contributors-guide/front-end-structure.md)
+* [Top level : Navigation components](contributors-guide/front-end-structure.md)
 
 ## Administrators guide
 

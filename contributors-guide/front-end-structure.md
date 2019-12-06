@@ -1,4 +1,4 @@
-# Front-end structure
+# Top level : Navigation components
 
 ### Navigation patterns
 
@@ -72,13 +72,46 @@ computed: {
 
 ```
 
-The v-ons-tabbar component has a **tabs** property. In vueJS, a property starting with a column is **bound** to the local context.
+The v-ons-tabbar component has a **tabs property,** set to **val** below. 
 
-Here the binding occurs with the variable tabs \(declared tabs\(\)\). 
+```javascript
+    <v-ons-tabbar
+      position="auto"
+      :tabs="val"
+    ></v-ons-tabbar>
+
+```
+
+
+
+In VueJS, a property starting with a **colon** is **bound reactively** to the local context. Here the **tabs property** take the **tabs** value. This value is the return of the tabs\(\) function.
 
 {% hint style="info" %}
-Try to change labels or icon in tabs\(\) declaration.
+Change labels or icon in tabs\(\) declaration.
+
+Remove an element of the tabs array, what happens?
 {% endhint %}
 
+#### The navigator component
 
+The navigator component is in charge of the stack of sub-pages. Whenever the user enter a subpage \(ex. consult a record\), or a sub-sub-page \(ex. modify a record\) ; the navigator updates the stack pages accordingly.
 
+```javascript
+AppNavigator.vue
+
+<template>
+  <v-ons-navigator swipeable swipe-target-width="50px"
+    :page-stack="$store.state.navigator.stack"
+    :pop-page="storePop"
+    :options="{animation:'slide-ios'}"
+    :class="{ 'border-radius': borderRadius }"
+  ></v-ons-navigator>
+</template>
+
+```
+
+Let's consider this piece of code. We notice 2 main property associated to v-ons-navigator :
+
+* page-stack : **preceded by a comma,** its value is **bound** to the current state of the stack \(an array\)
+* pop-page : **preceded by a comma,** its value is **bound** to a function \(storePop\), this function simply remove the last element of the stack
+* 
