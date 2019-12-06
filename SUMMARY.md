@@ -2,13 +2,14 @@
 
 * [Welcome to Albiziapp](README.md)
 * [User guide](user-guide/README.md)
-  * [Get start](user-guide/untitled.md)
+  * [TODO](user-guide/untitled.md)
   * [Botany](user-guide/botany.md)
 
 ## Contributors guide
 
 * [Recommendations](contributors-guide/untitled.md)
 * [Getting started](contributors-guide/getting-started.md)
+* [Front-end structure](contributors-guide/front-end-structure.md)
 
 ## Administrators guide
 

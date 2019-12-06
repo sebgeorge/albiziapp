@@ -40,7 +40,7 @@ $ npm run dev
 
 If all goes well you should be directed to a page like this :
 
-![](../.gitbook/assets/image%20%286%29.png)
+![](../.gitbook/assets/image%20%288%29.png)
 
 
 
