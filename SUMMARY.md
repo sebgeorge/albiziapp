@@ -7,7 +7,8 @@
 
 ## Contributors guide
 
-* [Prerequites](contributors-guide/untitled.md)
+* [Recommendations](contributors-guide/untitled.md)
+* [Getting started](contributors-guide/getting-started.md)
 
 ## Administrators guide
 

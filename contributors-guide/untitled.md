@@ -2,28 +2,21 @@
 description: To contribute well
 ---
 
-# Prerequites
+# Recommendations
 
 ## Understanding of VueJS
 
 Albiziapp is almost only based on VueJS. Either a basic understanding of Vue or a solid JS background is recommended.
 
-```
-$ give me super-powers
-```
-
 {% hint style="info" %}
- Super-powers are granted randomly so please submit an issue if you're not happy with yours.
+ If you know React/Angular/Polymer, you're good.
 {% endhint %}
 
-Once you're strong enough, save the world:
+### Basic knowledge NoSQL
 
-{% code title="hello.sh" %}
-```bash
-# Ain't no code for that yet, sorry
-echo 'You got to trust me on this, I saved the world'
-```
-{% endcode %}
+ All data is stored in NoSQL \(MongoDB\). It's a very convenient format for the data we deal with \(Geographical\). 
+
+
 
 
 

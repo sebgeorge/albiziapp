@@ -18,13 +18,3 @@ A **collaborative**, **gamified**, **tree mapping** web application.
 
 ![](.gitbook/assets/image%20%285%29.png)
 
-```
-$ npm install albiziapp
-```
-
-{% hint style="info" %}
- Check your permision.
-{% endhint %}
-
-
-
