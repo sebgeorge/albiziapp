@@ -1,6 +1,6 @@
 # Front-end structure
 
-## Navigation patterns
+### Navigation patterns
 
 Albiziapp follows the pattern of OnsenUI Framework \([https://onsen.io/v2/api/vue/](https://onsen.io/v2/api/vue/)\). 
 
@@ -16,24 +16,14 @@ Pages are either root \(in navbar\), or stacked \(on top of a root page, or a st
 All stacked page have a back button \(blue arrow\)
 {% endhint %}
 
+### Navigation components
 
+These navigation pattern are based on two top-level components.  
 
+```javascript
+src/AppTabBar.vue
+src/AppNavigator.vue
 ```
-$ give me super-powers
-```
 
-{% hint style="info" %}
- Super-powers are granted randomly so please submit an issue if you're not happy with yours.
-{% endhint %}
-
-Once you're strong enough, save the world:
-
-{% code title="hello.sh" %}
-```bash
-# Ain't no code for that yet, sorry
-echo 'You got to trust me on this, I saved the world'
-```
-{% endcode %}
-
-
+The former describe the state of the root. The later manages the push/pop operations associated with the stack pattern.
 
