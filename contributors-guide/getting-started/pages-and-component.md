@@ -1,8 +1,12 @@
 # Pages and component
 
-## Getting Super Powers
+## Pages in Albiziapp 
 
-Becoming a super hero is a fairly straight forward process:
+Since Albiziapp aims to mimic mobile look and feels, it is structured using the "page pattern". 
+
+Think of a page as a specific screen of a mobile app. Pages are practical for performing fast interactions. They usually have only one purpose, and they take all the screen. 
+
+ 
 
 ```
 $ give me super-powers
