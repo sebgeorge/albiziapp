@@ -27,7 +27,7 @@ src/AppNavigator.vue
 
 The former describe the state of the root. The later manages the push/pop operations associated with the stack pattern.
 
-#### The tab bar \(simplified\)
+#### The Tabbar \(simplified\)
 
 ```javascript
     <v-ons-tabbar
@@ -100,15 +100,23 @@ From there access Vue Dev Tools.
 The first tab of Vue Dev Tools is for watching component
 {% endhint %}
 
- 
-
 {% hint style="info" %}
 Use filter option to quickly access a given component
 {% endhint %}
 
-Here
+Here the Tabbar component is selected. Its **properties** \(eg. tabs\) can be directly visualized in dev tools.
 
-![](../../.gitbook/assets/image%20%285%29.png)
+
+
+![AppTabbar properties](../../.gitbook/assets/selection_503.png)
+
+
+
+{% hint style="info" %}
+For each properties, find which dom element is bound
+{% endhint %}
+
+
 
 #### The navigator component
 
@@ -132,8 +140,4 @@ Let's consider this piece of code. We notice 2 main property associated to v-ons
 
 * page-stack : **preceded by a comma,** its value is **bound** to the current state of the stack \(an array\)
 * pop-page : **preceded by a comma,** its value is **bound** to a function \(storePop\), this function simply remove the last element of the stack
-
-
-
-
 
