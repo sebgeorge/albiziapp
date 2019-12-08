@@ -6,7 +6,15 @@ Since Albiziapp aims to mimic mobile look and feels, it is structured using the 
 
 Think of a page as a specific screen of a mobile app. Pages are practical for performing fast interactions. They usually have only one purpose, and they take all the screen. 
 
- 
+![A page for entering record](../../.gitbook/assets/image%20%288%29.png)
+
+{% hint style="info" %}
+It's a best practice to keep pages focused on only one task
+{% endhint %}
+
+###  Creating a page
+
+Creating a page is 
 
 ```
 $ give me super-powers
