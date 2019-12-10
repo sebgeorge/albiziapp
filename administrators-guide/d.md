@@ -4,7 +4,7 @@
 
 Albiziapp VM hosts two distinct applications :
 
-#### Albiziapp 
+### Albiziapp 
 
 URL : https://albiziapp.reveries-project.fr
 
@@ -161,18 +161,13 @@ reveries@albiziapp:~$ pm2 show 0
 
 ```
 
-{% hint style="info" %}
- Super-powers are granted randomly so please submit an issue if you're not happy with yours.
-{% endhint %}
+### Albiziapp-viewer
 
-Once you're strong enough, save the world:
+URL : [https://viewer.albiziapp.reveries-project.fr/](https://viewer.albiziapp.reveries-project.fr/)
 
-{% code title="hello.sh" %}
-```bash
-# Ain't no code for that yet, sorry
-echo 'You got to trust me on this, I saved the world'
-```
-{% endcode %}
+ssl : certbot
+
+This 
 
 
 
