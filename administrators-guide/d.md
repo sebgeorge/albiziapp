@@ -167,7 +167,15 @@ URL : [https://viewer.albiziapp.reveries-project.fr/](https://viewer.albiziapp.r
 
 ssl : certbot
 
-This 
+This process **isn't managed** by pm2 at the moment. 
+
+{% hint style="info" %}
+TODO : use pm2 for albiziapp-viewer
+{% endhint %}
+
+## Data persistence 
+
+All data collected \(so far\) in Albiziapp is stored in an **unique instance of MongoDB.** 
 
 
 
