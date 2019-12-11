@@ -1,10 +1,10 @@
-# Pages and component
+# Pages and sub-component
 
 ## Pages in Albiziapp 
 
 Since Albiziapp aims to mimic mobile look and feels, it is structured using the "page pattern". 
 
-Think of a page as a specific screen of a mobile app. Pages are practical for performing fast interactions. They usually have only one purpose, and they take all the screen. 
+Think of a page as **a specific screen of a mobile app**. Pages are practical for **performing fast, focused interactions**. They usually have only one purpose, and they take all the screen. 
 
 ![A page for entering record](../../.gitbook/assets/image%20%288%29.png)
 
@@ -12,9 +12,9 @@ Think of a page as a specific screen of a mobile app. Pages are practical for pe
 It's a best practice to keep pages focused on only one task
 {% endhint %}
 
-###  Creating a page
+###  The v-ons-page component
 
-Creating a page is 
+Pages are defined by the [https://onsen.io/v2/api/vue/v-ons-page.html](https://onsen.io/v2/api/vue/v-ons-page.html)
 
 ```
 $ give me super-powers
