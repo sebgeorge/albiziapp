@@ -37,7 +37,9 @@ Interface components such as [checkbox](https://onsen.io/v2/api/vue/v-ons-checkb
 * Custom components \(specific to Albiziapp\)
 * Components from external libraries \(such as [Leaflet](https://leafletjs.com/)\)
 
-Native components are easy to use and integrates perfectly with the application. Using them guarantee a consistent user interface. They 
+#### Native OnsenUI Components
+
+Native OnsenUI components are the set of components provided by OnsenUI for VueJS. These component are documented and reliable.
 
 
 
