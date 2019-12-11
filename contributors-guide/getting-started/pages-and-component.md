@@ -2,7 +2,7 @@
 
 ## Pages in Albiziapp 
 
-Since Albiziapp aims to mimic mobile look and feels, it is structured using the "page pattern". 
+Since Albiziapp aims to mimic mobile look and feels, it is structured using the "page pattern" proposed by the [OnsenUI Framwork](https://onsen.io/v2/api/vue/).
 
 Think of a page as **a specific screen of a mobile app**. Pages are practical for **performing fast, focused interactions**. They usually have only one purpose, and they take all the screen. 
 
@@ -14,24 +14,32 @@ It's a best practice to keep pages focused on only one task
 
 ###  The v-ons-page component
 
-Pages are defined by the [https://onsen.io/v2/api/vue/v-ons-page.html](https://onsen.io/v2/api/vue/v-ons-page.html)
+Pages being VueJS components, they have a formal definition. The page component documentation can be found here : [v-ons-page](https://onsen.io/v2/api/vue/v-ons-page.html).    
+
+A minimal example of a v-ons-page is :
+
+```javascript
+<template>
+  <v-ons-page>
+    <p style="text-align: center">
+      "Hello world of pages"
+    </p>
+  </v-ons-page>
+</template>
 
 ```
-$ give me super-powers
-```
 
-{% hint style="info" %}
- Super-powers are granted randomly so please submit an issue if you're not happy with yours.
-{% endhint %}
+### Sub-components
 
-Once you're strong enough, save the world:
+Interface components such as [checkbox](https://onsen.io/v2/api/vue/v-ons-checkbox.html), [switch](https://onsen.io/v2/api/vue/v-ons-switch.html)... are **always declared inside a page component.** Three types of subcomponents can be distinguished :
 
-{% code title="hello.sh" %}
-```bash
-# Ain't no code for that yet, sorry
-echo 'You got to trust me on this, I saved the world'
-```
-{% endcode %}
+* Native [OnsenUI components](https://onsen.io/v2/api/vue/)
+* Custom components \(specific to Albiziapp\)
+* Components from external libraries \(such as [Leaflet](https://leafletjs.com/)\)
+
+Native components are easy to use and integrates perfectly with the application. Using them guarantee a consistent user interface. They 
 
 
+
+ 
 
