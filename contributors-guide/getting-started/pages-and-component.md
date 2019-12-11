@@ -39,7 +39,11 @@ Interface components such as [checkbox](https://onsen.io/v2/api/vue/v-ons-checkb
 
 #### Native OnsenUI Components
 
-Native OnsenUI components are the set of components provided by OnsenUI for VueJS. These component are documented and reliable.
+Native OnsenUI components are the set of components provided by OnsenUI for VueJS. **These component are documented and reliable**. **However** the set of component is quite limited some components aren't visually appealing \(ie v-ons-list\).  Hence the needs for Custom and External components.
+
+#### Custom components 
+
+Custom components 
 
 
 
