@@ -7,6 +7,8 @@
 
 ```
 $ npm i -g vue/@cli
+Remarque Seb : j'ai tapé ça sudo npm install -g @vue/cli (sinon j'avais des erreurs)
+... mais en fait j'en ai plein d'autres maintenant !
 $ npm i -g pm2
 ```
 
