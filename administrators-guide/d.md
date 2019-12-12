@@ -18,7 +18,7 @@ $ pm2 list
 
 gives access to the list of process managed by pm2. Here, only one :
 
-![](../.gitbook/assets/image%20%2810%29.png)
+![](../.gitbook/assets/image%20%2811%29.png)
 
 pm2 is very convenient to manage an app in production. Among others, it will restart the node app in case of crash, it keeps  `stdout` and `stderr` \(access through pm2 logs\):
 

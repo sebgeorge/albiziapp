@@ -10,8 +10,8 @@
 * [Recommendations](contributors-guide/untitled.md)
 * [Getting started](contributors-guide/getting-started/README.md)
   * [Top level : Navigation components](contributors-guide/getting-started/front-end-structure.md)
-  * [Pages and sub-component](contributors-guide/getting-started/pages-and-component.md)
-* [Adding/changing a page](contributors-guide/adding-changing-a-page.md)
+  * [Pages and interaction components](contributors-guide/getting-started/pages-and-component.md)
+* [Creating a new page \(exercise\)](contributors-guide/adding-changing-a-page.md)
 
 ## Administrators guide
 
