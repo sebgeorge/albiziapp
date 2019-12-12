@@ -4,10 +4,6 @@
 
 A **collaborative**, **gamified**, **tree mapping** web application.
 
-```text
-
-```
-
 ## Why ?
 
 ![](.gitbook/assets/image%20%282%29.png)
